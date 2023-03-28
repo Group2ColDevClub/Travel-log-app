@@ -1,5 +1,20 @@
 {
-  "dependencies": {
-    "prop-types": "^15.8.1"
-  }
+  "name": "travel-log-app",
+  "version": "1.0.0",
+  "description": "Welcome to the Project Name! This is a web application for booking travel packages, searching for flights and accommodations, and connecting with other travelers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Group2ColDevCluv/Travel-log-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Group2ColDevCluv/Travel-log-app/issues"
+  },
+  "homepage": "https://github.com/Group2ColDevCluv/Travel-log-app#readme"
 }
