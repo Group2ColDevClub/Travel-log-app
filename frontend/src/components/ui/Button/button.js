@@ -1,1 +1,1 @@
-// some genric component
+//some genric component
