@@ -6,8 +6,9 @@
      box-sizing: border-box;
  }
  :root {
-   --primaryBtn-color:#FA504D;
-   --secondary-titles-color:#FFFFFF;
-   --text-color:#666666;
-   --footer-color:#000000;
+   --primary-red:#FA504D;
+   --white:#FFFFFF;
+   --grey:#666666;
+   --black:#000000;
+   
  }
