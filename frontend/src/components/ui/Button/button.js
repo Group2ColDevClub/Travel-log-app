@@ -1,1 +1,4 @@
-//some genric component
+// some genric component
+export function Button() {
+  return <div />;
+}

@@ -20,7 +20,7 @@
     "react/prop-types": "off",
     "import/prefer-default-export": "off",
     "default-case": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "node/no-unsupported-features/es-syntax": [
       "error",
       {
