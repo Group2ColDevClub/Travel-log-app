@@ -4,18 +4,11 @@ import styles from './button.module.css';
 function Button({ label, icon, onClick, size, variant, type, shape, className }) {
   const iconElement = icon ? <img src={icon} alt='' /> : null;
 
-  const getButtonType = () => {
-    if (type === 'submit' || type === 'reset' || type === 'button') {
-      return type;
-    }
-    return 'button';
-  };
-
   return (
     <button
-      className={`${styles.button} ${styles[`button--${size}`]} ${styles[`button--${variant}`]} ${styles[`button--${shape}`]} ${className}`}
+      className={`${styles.button} ${styles[`button_${size}`]} ${styles[`button_${variant}`]} ${styles[`button_${shape}`]} ${className}`}
       onClick={onClick}
-      type={getButtonType()}
+      type={type || 'default'}
     >
       {iconElement}
       {label}
