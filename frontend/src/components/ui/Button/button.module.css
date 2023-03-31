@@ -1,4 +1,3 @@
-/* Button Styles */
 .button {
     display: inline-flex;
     align-items: center;
@@ -12,39 +11,39 @@
     transition: all 0.2s ease-in-out;
   }
   
-  .button--s {
+  .button_s {
     padding: 0.25rem 0.5rem;
     font-size: 0.875rem;
     width: 10rem;
     height: 3rem;
   }
   
-  .button--m {
+  .button_m {
     padding: 0.5rem 1rem;
     width: 13rem;
     height: 3.5rem;
   }
   
-  .button--l {
+  .button_l {
     padding: 0.75rem 1.5rem;
     font-size: 1.125rem;
     width: 15rem;
     height: 3.75rem;
   }
   
-  .button--primary {
+  .button_primary {
     color: var(--white);
     background-color: var(--primary-red);
     border: 2px solid var(--white);
   }
   
-  .button--secondary {
+  .button_secondary {
     color:var(--primary-red);
     background-color: var(--white);
     border: 2px solid var(--primary-red);
   }
   
-  .button--tertiary {
+  .button_tertiary {
     --button-size: 3rem; 
     color: var(--primary-red);
     background-color: var(--white);
@@ -62,8 +61,8 @@
     height: var(--button-size);
   }
   
-  .button--tertiary::before,
-  .button--tertiary::after {
+  .button_tertiary::before,
+  .button_tertiary::after {
     content: "";
     position: absolute;
     width: 50%;
@@ -74,11 +73,11 @@
     border-radius: 2px;
   }
   
-  .button--tertiary::before {
+  .button_tertiary::before {
     transform: rotate(0deg); 
   }
   
-  .button--tertiary::after {
+  .button_tertiary::after {
     transform: rotate(90deg);
   }
     
