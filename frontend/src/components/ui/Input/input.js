@@ -4,7 +4,7 @@ import Label from '../Label/label';
 
 function Input({ value, label, onChange, size, type, className, placeholder, defaultValue, name }) {
   return (
-    <div className={style.input}>
+    <div className={[style.input, className]}>
       <Label labelName={label} />
       <input type={type} name={name} size={size} onChange={onChange} placeholder={placeholder} value={value ?? defaultValue} />
     </div>
