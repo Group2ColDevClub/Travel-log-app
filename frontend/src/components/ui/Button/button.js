@@ -6,9 +6,7 @@ function Button({ label, icon, onClick, size, variant, type, shape, className })
     <img src={icon.src} alt={icon.alt} className={shape === 'circle' ? styles.button_circle_icon : styles.button_rectangle_icon} />
   ) : null;
 
-  const hasLabel = label !== undefined;
-  const hasIcon = icon !== undefined;
-  if (!hasLabel && !hasIcon) {
+  if (!label && !icon) {
     console.error('Button must have either a label or an icon.');
   }
 
