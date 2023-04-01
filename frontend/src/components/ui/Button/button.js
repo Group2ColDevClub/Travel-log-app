@@ -3,10 +3,14 @@ import styles from './button.module.css';
 
 function Button({ label, icon, onClick, size, variant, type, shape, className }) {
   const iconElement = icon ? (
-    <div className={styles.button_icon_wrapper}>
-      <img src={icon} alt={icon.alt} className={shape === 'circle' ? styles.button_circle_icon : styles.button_rectangle_icon} />
-    </div>
+    <img src={icon.src} alt={icon.alt} className={shape === 'circle' ? styles.button_circle_icon : styles.button_rectangle_icon} />
   ) : null;
+
+  const hasLabel = label !== undefined;
+  const hasIcon = icon !== undefined;
+  if (!hasLabel && !hasIcon) {
+    console.error('Button must have either a label or an icon.');
+  }
 
   return (
     <button
@@ -16,7 +20,10 @@ function Button({ label, icon, onClick, size, variant, type, shape, className })
       onClick={onClick}
       type={type}
     >
-      {label || !icon ? label : iconElement}
+      {/* Show label only if icon is not available */}
+      {hasLabel && !hasIcon && label}
+      {/* Show icon only if label is not available */}
+      {!hasLabel && hasIcon && iconElement}
     </button>
   );
 }
@@ -30,7 +37,10 @@ Button.defaultProps = {
 
 Button.propTypes = {
   label: PropTypes.string,
-  icon: PropTypes.string,
+  icon: PropTypes.shape({
+    icon: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+  }),
   onClick: PropTypes.func.isRequired,
   size: PropTypes.oneOf(['s', 'm', 'l']),
   variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
