@@ -14,7 +14,12 @@
       "noEmit": true,
       "paths": {
         "*": ["node_modules/*", "src/types/*"]
-      }
+      },
+      "plugins": [
+        {
+          "name": "typescript-plugin-css-modules"
+        }
+      ]
     },
     "types": [
       "node",
