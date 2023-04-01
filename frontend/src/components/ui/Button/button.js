@@ -19,7 +19,8 @@ function Button({ label, icon, onClick, size, variant, type, shape, className })
       type={type}
     >
       {label && !icon && label}
-      {!label && icon && iconElement}
+      {icon && iconElement}
+      <div className='.label_icon_wrapper'>{label && icon && iconElement && label}</div>
     </button>
   );
 }
@@ -34,7 +35,7 @@ Button.defaultProps = {
 Button.propTypes = {
   label: PropTypes.string,
   icon: PropTypes.shape({
-    icon: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
     alt: PropTypes.string.isRequired,
   }),
   onClick: PropTypes.func.isRequired,
