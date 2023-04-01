@@ -1,4 +1,30 @@
 .navbar_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
-    height: 4rem;
+    height: 3.5rem;
+    background-color: var(--header-color);
+}
+
+.title_log{
+    color: #E4E4E4;
+}
+
+li::marker{
+    content: "";
+}
+
+.navbar_item {
+    color: var(--white);
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+}
+
+.navbar_pages{
+    display: flex;
+}
+
+.selected_nav{
+    text-decoration: underline;
 }
