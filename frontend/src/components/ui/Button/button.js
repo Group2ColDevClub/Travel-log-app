@@ -18,8 +18,8 @@ function Button({ label, icon, onClick, size, variant, type, shape, className })
       onClick={onClick}
       type={type}
     >
-      {hasLabel && !hasIcon && label}
-      {!hasLabel && hasIcon && iconElement}
+      {label && !icon && label}
+      {!label && icon && iconElement}
     </button>
   );
 }
