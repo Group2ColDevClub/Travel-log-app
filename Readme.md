@@ -1,6 +1,6 @@
 # Travel-log-app
 
-Welcome to the tracel log app! This is a web application for booking travel packages, searching for flights and accommodations, and connecting with other travelers.
+Welcome to the travel log app! This is a web application for booking travel packages, searching for flights and accommodations, and connecting with other travelers.
 
 # Features
 
