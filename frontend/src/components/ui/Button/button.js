@@ -20,9 +20,7 @@ function Button({ label, icon, onClick, size, variant, type, shape, className })
       onClick={onClick}
       type={type}
     >
-      {/* Show label only if icon is not available */}
       {hasLabel && !hasIcon && label}
-      {/* Show icon only if label is not available */}
       {!hasLabel && hasIcon && iconElement}
     </button>
   );
