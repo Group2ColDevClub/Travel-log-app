@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import styles from './button.module.css';
+import styles from './Button.module.css';
 
 function Button({ label, icon, onClick, size, variant, type, shape, className }) {
   const iconElement = icon ? (
