@@ -1,3 +1,3 @@
-export default function App() {
-  return <div className='App' />;
+export function Button() {
+  return <div />;
 }
