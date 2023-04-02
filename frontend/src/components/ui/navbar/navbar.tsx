@@ -20,10 +20,10 @@ export default function NavBar() {
         </li>
       </span>
       <span className={styles.navbar_pages}>
-        {Object.entries(routes).map((val) => (
-          <li key={`route_${val[0]}`}>
-            <Link to={val[1]} className={`${styles.navbar_item} ${location.pathname === val[1] ? styles.selected_nav : ''}`}>
-              {val[0].replace(/_/g, ' ')}
+        {Object.entries(routes).map(([title, route]) => (
+          <li key={`route_${title}`}>
+            <Link to={route} className={`${styles.navbar_item} ${location.pathname === route ? styles.selected_nav : ''}`}>
+              {title.replace(/_/g, ' ')}
             </Link>
           </li>
         ))}
