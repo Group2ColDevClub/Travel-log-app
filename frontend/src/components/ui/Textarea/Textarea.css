@@ -1,10 +1,10 @@
-@import "/Travel-log-app/frontend/src/index.css";
+
   .textarea {
     flex: 1;
     height: 6.25rem;
     padding: 0.375rem 0.75rem;
     font-size: 0.875rem;
-    line-height: 1.42857143;
+    line-height: normal;
     color: var(--grey);
     background-color: var(--white);
     border: 1px solid #ccc;
@@ -13,13 +13,13 @@
 
   
   .textarea--s {
-    height: 50px;
+    height: 3.125rem;
   }
 
   .textarea--m {
-    height: 100px;
+    height: 6.25rem;
   }
   
   .textarea--l {
-    height: 150px;
+    height: 9.375rem;
   }
