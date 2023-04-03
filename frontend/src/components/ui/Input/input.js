@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 import styles from './input.module.css';
 import Label from '../Label/label';
 
-export default function Input({ value, label, onChange, size, type, className, placeholder, defaultValue, name }) {
+function Input({ value, label, onChange, size, type, className, placeholder, defaultValue, name }) {
   return (
     <div className={styles.input_wrapper}>
       {label ?? <Label htmlFor={name}>{label}</Label>}
       <input
         type={type}
         name={name}
+        id={name}
         size={size}
         className={`${styles.input} ${styles[size]} ${className}`}
         onChange={onChange}
@@ -34,6 +35,8 @@ Input.propTypes = {
   type: PropTypes.oneOf(['number', 'date', 'password', 'text', 'email', 'select']),
   className: PropTypes.string,
   placeholder: PropTypes.string,
-  defaultValue: PropTypes.string,
+  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   name: PropTypes.string,
 };
+
+export default Input;
