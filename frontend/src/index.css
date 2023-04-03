@@ -4,10 +4,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: var(--white);
 }
+
 :root {
   --red: #fa504d;
   --white: #ffffff;
   --grey: #666666;
   --black: #000000;
+  --header-color: rgba(255, 255, 255, 0.17);
+  background-color: #1E1E1E;
 }
