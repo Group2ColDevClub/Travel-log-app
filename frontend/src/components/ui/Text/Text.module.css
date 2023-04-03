@@ -1,13 +1,13 @@
 .Regular {
   font-weight: normal;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .Bold {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 1.2rem;
 }
 
 .text_red {
-  color: red;
+  color: var(--primary-res);
 }
