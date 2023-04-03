@@ -1,7 +1,6 @@
 import React from "react";
 import propTypes from "prop-types";
 import "./Textarea.css";
-import "Travel-log-app/frontend/src/index.css";
 
 function Textarea(props){
     const  {value, label, onChange, size, placeholder, className, name} = props;
