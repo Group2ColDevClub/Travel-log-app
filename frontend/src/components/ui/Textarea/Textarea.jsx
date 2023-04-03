@@ -2,13 +2,12 @@ import React from "react";
 import propTypes from "prop-types";
 import "./Textarea.css";
 
-function Textarea(props){
-    const  {value, label, onChange, size, placeholder, className, name} = props;
+function Textarea({value, label, onChange, size, placeholder, className, name}){
 
     const TextareaClasses = `textarea ${size ? `textarea--${size}` : "m"}`;
     return(
         <>
-            {label !== undefined && <label htmlFor="{name}">{label}</label>}
+            {label && <label htmlFor={name}>{label}</label>}
             <textarea 
                 onChange={onChange}
                 value={value}
