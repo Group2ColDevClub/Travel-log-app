@@ -2,19 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Title.module.css';
 
-function Title({ title, size, className }) {
+function Title({ title, size, className, variant }) {
   const classes = [styles.Title, styles[size], className].join(' ');
-  return <h1 className={classes}>{title}</h1>;
+  const TagName = variant;
+  return <TagName className={classes}>{title}</TagName>;
 }
 
 Title.propTypes = {
   title: PropTypes.string.isRequired,
-  size: PropTypes.oneOf(['First', 'Second', 'Third']),
+  size: PropTypes.oneOf(['first', 'second', 'third']),
   className: undefined,
+  variant: PropTypes.string,
 };
 
 Title.defaultProps = {
-  size: 'Third',
+  size: 'third',
+  variant: 'h1',
 };
 
 export default Title;

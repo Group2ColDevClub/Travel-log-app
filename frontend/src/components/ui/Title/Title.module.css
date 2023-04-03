@@ -3,14 +3,14 @@
   margin: 0;
 }
 
-.First {
-  font-size: 48px;
+.first {
+  font-size: 3rem;
 }
 
-.Second {
-  font-size: 36px;
+.second {
+  font-size: 2.25rem;
 }
 
-.Third {
-  font-size: 24px;
+.third {
+  font-size: 1.5rem;
 }
