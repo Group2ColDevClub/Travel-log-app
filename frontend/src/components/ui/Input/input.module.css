@@ -1,0 +1,23 @@
+.input {
+  box-sizing: border-box;
+  background: var(--white);
+  border: 2px solid var(--red);
+  border-radius: 7px;
+}
+
+.input_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.l {
+  width: 25rem;
+}
+
+.m {
+  width: 18rem;
+}
+
+.s {
+  width: 12rem;
+}
