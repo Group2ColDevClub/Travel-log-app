@@ -9,7 +9,7 @@ function Text({ content, type, className }) {
 Text.propTypes = {
   content: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['Regular', 'Bold']),
-  className: PropTypes.string,
+  className: undefined,
 };
 
 Text.defaultProps = {
