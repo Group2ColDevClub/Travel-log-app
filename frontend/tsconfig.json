@@ -2,16 +2,31 @@
     "compilerOptions": {
       "target": "es6",
       "module": "esnext",
-      "jsx": "react",
+      "jsx": "react-jsx",
       "sourceMap": true,
       "esModuleInterop": true,
       "noImplicitAny": true,
       "moduleResolution": "node",
       "baseUrl": "src",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "allowSyntheticDefaultImports": true,
+      "noEmit": true,
       "paths": {
         "*": ["node_modules/*", "src/types/*"]
-      }
+      },
+      "plugins": [
+        {
+          "name": "typescript-plugin-css-modules"
+        }
+      ]
     },
+    "types": [
+      "node",
+      "react",
+      "react-dom",
+      "webpack-env"
+    ],
     "include": [
       "./src/**/*.tsx",
       "./src/**/*.ts",
