@@ -5,7 +5,7 @@ import Label from '../Label/label';
 export default function Input({ value, label, onChange, size, type, className, placeholder, defaultValue, name }) {
   return (
     <div className={styles.input_wrapper}>
-      <Label htmlFor={name}>{label}</Label>
+      {label ?? <Label htmlFor={name}>{label}</Label>}
       <input
         type={type}
         name={name}
@@ -27,7 +27,7 @@ Input.defaultProps = {
 };
 
 Input.propTypes = {
-  value: PropTypes.string || PropTypes.number,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label: PropTypes.string,
   onChange: PropTypes.func,
   size: PropTypes.oneOf(['s', 'm', 'l']),
