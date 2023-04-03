@@ -1,6 +1,23 @@
-.input input {
+.input {
   box-sizing: border-box;
-  background: #ffffff;
-  border: 2px solid #fa504d;
+  background: var(--white);
+  border: 2px solid var(--red);
   border-radius: 7px;
+}
+
+.input_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.l {
+  width: 400px;
+}
+
+.m {
+  width: 290px;
+}
+
+.s {
+  width: 195px;
 }

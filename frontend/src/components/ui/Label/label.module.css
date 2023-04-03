@@ -1,5 +1,3 @@
-.h1 {
-  color: #b4b4b4;
-  font-weight: 700;
-  font-size: 18px;
+.label {
+  color: var(--white);
 }

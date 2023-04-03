@@ -1,22 +1,29 @@
 import PropTypes from 'prop-types';
-import style from './input.module.css';
+import styles from './input.module.css';
 import Label from '../Label/label';
 
-function Input({ value, label, onChange, size, type, className, placeholder, defaultValue, name }) {
+export default function Input({ value, label, onChange, size, type, className, placeholder, defaultValue, name }) {
   return (
-    <div className={[style.input, className]}>
-      <Label labelName={label} />
-      <input type={type} name={name} size={size} onChange={onChange} placeholder={placeholder} value={value ?? defaultValue} />
+    <div className={styles.input_wrapper}>
+      <Label htmlFor={name}>{label}</Label>
+      <input
+        type={type}
+        name={name}
+        size={size}
+        className={`${styles.input} ${styles[size]} ${className}`}
+        onChange={onChange}
+        placeholder={placeholder}
+        value={value}
+        defaultValue={defaultValue}
+      />
     </div>
   );
 }
 
-export default Input;
-
 Input.defaultProps = {
   size: 'm',
-  className: undefined,
   type: 'text',
+  value: undefined,
 };
 
 Input.propTypes = {
