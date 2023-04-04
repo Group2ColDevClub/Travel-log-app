@@ -1,0 +1,8 @@
+.UploadFile {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  position: relative;
+}
