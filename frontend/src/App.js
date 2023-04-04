@@ -30,6 +30,8 @@ export default function App() {
         onSubmit={(data, e) => {
           console.log(data);
         }}
+        secondaryButtonText='this is a secondary'
+        onScondaryClick={(a) => console.log('secondary', a)}
       />
       <Routes>
         <Route path='/' element={<>/</>} />

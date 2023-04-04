@@ -49,10 +49,17 @@ export default function Form({ inputs, onSubmit, onScondaryClick, className, pri
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    e.stopPropagation();
     const data = getData(e);
     if (validate(data)) {
       onSubmit(data, e);
     }
+  };
+
+  const handleSecondary = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = getData(e);
+    console.log(data);
   };
 
   return (
@@ -74,7 +81,7 @@ export default function Form({ inputs, onSubmit, onScondaryClick, className, pri
       <Button type='submit' label={primaryButtonText} className={styles.form_item} />
       {secondaryButtonText && (
         <Button
-          type='submit'
+          type='button'
           label={secondaryButtonText}
           className={styles.form_item}
           variant='tertiary'
