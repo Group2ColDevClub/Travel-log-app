@@ -12,12 +12,11 @@ Title.propTypes = {
   title: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['first', 'second', 'third']),
   className: undefined,
-  variant: PropTypes.string,
+  variant: PropTypes.oneOf(['1', '2', '3', '4', '5', '6']).isRequired,
 };
 
 Title.defaultProps = {
   size: 'third',
-  variant: 'h1',
 };
 
 export default Title;
