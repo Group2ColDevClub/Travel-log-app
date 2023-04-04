@@ -8,3 +8,7 @@
 .form_input{
     margin: 0.5rem 0;
 }
+
+.input_error_msg{
+    color: var(--primary-red);
+}
