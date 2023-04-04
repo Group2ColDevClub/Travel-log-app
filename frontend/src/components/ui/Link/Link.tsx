@@ -1,4 +1,4 @@
-import { Link, LinkProps } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './Link.module.css';
 
 interface ILinkProps {
