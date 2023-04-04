@@ -1,0 +1,27 @@
+.footer-container {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 4rem;
+  width: 100%;
+  background-color: var(--black);
+}
+
+h3 {
+  font-weight: 600;
+  margin-bottom: 0rem;
+  margin-top: 1rem;
+}
+
+a {
+  text-decoration: none;
+  opacity: 60%;
+}
+
+.culomn {
+  height: 14.9rem;
+  width: 16rem;
+  left: 6rem;
+  top: 1rem;
+  line-height: 2rem;
+  padding-right: 8.1rem;
+}
