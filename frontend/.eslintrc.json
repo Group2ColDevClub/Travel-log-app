@@ -20,6 +20,7 @@
     "react/prop-types": "off",
     "import/prefer-default-export": "off",
     "default-case": "off",
+    "import/no-extraneous-dependencies":["off"],
     "react/button-has-type": "off",
     "react/require-default-props": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
