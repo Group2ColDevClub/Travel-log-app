@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './Text.module.css';
 
 function Text({ content, type, className }) {
-  return <p className={`${styles[type]} ${className}`}>{content}</p>;
+  return <p className={`${styles[type]} ${styles[className]}`}>{content}</p>;
 }
 
 Text.propTypes = {
