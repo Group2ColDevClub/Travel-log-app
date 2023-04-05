@@ -84,7 +84,7 @@ export default function Form({ inputs, onSubmit, onScondaryClick, className, pri
           type='button'
           label={secondaryButtonText}
           className={styles.form_item}
-          variant='tertiary'
+          variant='secondary'
           onClick={(e) => onScondaryClick(e)}
         />
       )}
