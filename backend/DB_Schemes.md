@@ -1,7 +1,6 @@
-##Users##
+## Users##
 
-```javescript
-{
+```javascript
 	userID : Number,
     username : {
         type: string,
@@ -42,10 +41,9 @@
         createdAt:Date
     }],
 }
-
 ```
 
-##Packages##
+## packages##
 
 ```javascript
 {
@@ -56,7 +54,7 @@
 }
 ```
 
-##posts##
+## Posts##
 
 ```javascript
 {
@@ -70,11 +68,10 @@
 }
 ```
 
-##TripSearches##
+## Trip Searches##
 
 ```javascript
 
-{
   searchCount:Number,
   flight[{
     flightID:Number,
@@ -90,7 +87,7 @@
 }
 ```
 
-##TripPurchased##
+## Trip Purchased##
 
 ```javascript
 {
@@ -98,5 +95,4 @@
   accomndation:[{accomndationID:Number,accomndationPrice: Number,accomndationtDate:Date}],
   userID:Number
 }
-
 ```
