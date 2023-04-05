@@ -1,5 +1,5 @@
 * {
-  color: white;
+  color: var(--white);
 }
 
 .footer-container {
@@ -7,7 +7,7 @@
   justify-content: flex-start;
   padding-left: 4rem;
   width: 100%;
-  background-color: black;
+  background-color: var(--black);
 }
 .title {
   font-weight: 600;
