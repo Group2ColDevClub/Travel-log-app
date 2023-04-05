@@ -38,7 +38,7 @@ Button.propTypes = {
     src: PropTypes.string.isRequired,
     alt: PropTypes.string.isRequired,
   }),
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   size: PropTypes.oneOf(['s', 'm', 'l']),
   variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
   type: PropTypes.oneOf(['submit', 'reset', 'button']),

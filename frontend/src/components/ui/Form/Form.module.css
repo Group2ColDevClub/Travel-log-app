@@ -1,0 +1,14 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.form_input{
+    margin: 0.5rem 0;
+}
+
+.input_error_msg{
+    color: var(--primary-red);
+}

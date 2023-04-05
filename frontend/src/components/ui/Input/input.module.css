@@ -1,8 +1,11 @@
 .input {
   box-sizing: border-box;
   background: var(--white);
-  border: 2px solid var(--red);
+  border: 2px solid var(--primary-red);
   border-radius: 7px;
+  color: var(--black);
+  height: 3rem;
+  padding: 0.5rem;
 }
 
 .input_wrapper {
