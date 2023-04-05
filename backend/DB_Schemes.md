@@ -1,4 +1,4 @@
-## Users##
+## Users
 
 ```javascript
 	userID : Number,
@@ -43,7 +43,7 @@
 }
 ```
 
-## packages##
+## packages
 
 ```javascript
 {
@@ -54,7 +54,7 @@
 }
 ```
 
-## Posts##
+## Posts
 
 ```javascript
 {
@@ -68,7 +68,7 @@
 }
 ```
 
-## Trip Searches##
+## Trip Searches
 
 ```javascript
 
@@ -87,7 +87,7 @@
 }
 ```
 
-## Trip Purchased##
+## Trip Purchased
 
 ```javascript
 {
