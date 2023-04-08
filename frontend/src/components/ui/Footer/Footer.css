@@ -3,9 +3,11 @@
 }
 
 .footer-container {
+  position: fixed;
   display: flex;
   justify-content: flex-start;
   padding-left: 4rem;
+  bottom: 0;
   width: 100%;
   background-color: var(--black);
 }
@@ -15,7 +17,7 @@
   margin-top: 1rem;
 }
 .column {
-  height: 14.9rem;
+  /* height: 14.9rem; */
   width: 18rem;
   left: 6rem;
   top: 1rem;
