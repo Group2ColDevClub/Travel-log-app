@@ -1,0 +1,55 @@
+
+.searchTrip {
+display: flex;
+justify-content: space-around;
+padding:1.5rem;
+position: relative;
+margin-right: 2rem;
+} 
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    padding-top: 3rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.bg_image {
+    background-Image: url('../../assets/tripImage.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 60%;
+    width: 100%;
+    position: fixed;
+    background-position: center center;
+    position: relative;
+}
+
+.title_search {
+    display: flex;
+}
+
+.divSearchTrip{
+    padding-left:1rem;
+}
+
+.restOfThePage {
+    background-color: white;
+    height: 77.7vh;
+    width: 100%;
+    position: absolute;
+}
+
+label {
+    text-align: left;
+    font-size: small;
+    margin:0rem 0.2rem;
+}
+
+

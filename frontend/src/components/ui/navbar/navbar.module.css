@@ -1,10 +1,16 @@
 .navbar_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     height: 3.5rem;
-    background-color: var(--header-color);
+    background-color:transparent;
+    overflow: hidden;
+    opacity: 1.2; 
 }
 
 .title_log{
@@ -16,7 +22,6 @@ li::marker{
 }
 
 .navbar_item {
-    color: var(--white);
     text-decoration: none;
     padding: 1rem 1.5rem;
 }
