@@ -1,0 +1,53 @@
+.floating-action-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--white);
+  border: 3px solid var(--primary-red);
+  border-radius: 50%;
+  color: var(--primary-red);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.floating-action-button:hover {
+  background-color: var(--primary-red);
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.floating-action-button img {
+  width: 2rem;
+  height: 2rem;
+  margin: auto;
+}
+
+.floating-action-button::before,
+.floating-action-button::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 40%;
+  background-color: var(--primary-red);
+  transition: all 0.5s ease-in-out;
+}
+
+.floating-action-button::before {
+  transform: rotate(90deg);
+}
+
+.floating-action-button::after {
+  transform: rotate(180deg);
+}
+
+.floating-action-button:hover::before,
+.floating-action-button:hover::after {
+  background-color: var(--white);
+  height: 60%;
+}
