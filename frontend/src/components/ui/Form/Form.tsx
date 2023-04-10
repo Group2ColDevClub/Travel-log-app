@@ -3,20 +3,10 @@ import React, { useState } from 'react';
 import Button from '../Button/Button';
 import Input from '../Input/input';
 import styles from './Form.module.css';
-
-interface IFormInput {
-  label: string;
-  name: string;
-  placeholder?: string;
-  onChange: (value: any) => void;
-  value?: string | number;
-  defaultValue?: string | number;
-  validationFunc?: (value: any) => boolean;
-  errorMsg?: string;
-}
+import { FormInputModel } from '../../../models';
 
 interface IForm {
-  inputs: Array<IFormInput>;
+  inputs: Array<FormInputModel>;
   onSubmit: (data: { [key: string]: any }, e: React.SyntheticEvent) => void;
   className?: string;
   primaryButtonText?: string;
@@ -38,9 +28,9 @@ export default function Form({ inputs, onSubmit, onScondaryClick, className, pri
 
   const validate = (data: { [key: string]: any }) => {
     const allErrors: { [key: string]: string } = {};
-    inputs.forEach(({ label, validationFunc, errorMsg }) => {
-      if (!validationFunc(data[label])) {
-        allErrors[label] = errorMsg;
+    inputs.forEach(({ name, validationFunc, errorMsg }) => {
+      if (!validationFunc(data[name])) {
+        allErrors[name] = errorMsg;
       }
     });
     setErrors({ ...allErrors });
@@ -56,15 +46,9 @@ export default function Form({ inputs, onSubmit, onScondaryClick, className, pri
     }
   };
 
-  const handleSecondary = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const data = getData(e);
-    console.log(data);
-  };
-
   return (
     <form className={[styles.form, className].join(' ')} onSubmit={handleSubmit}>
-      {inputs.map(({ label, name, placeholder, onChange, value, defaultValue, errorMsg }) => (
+      {inputs.map(({ label, name, placeholder, onChange = () => {}, value, defaultValue, errorMsg, type }) => (
         <span key={label}>
           <Input
             label={label}
@@ -74,11 +58,12 @@ export default function Form({ inputs, onSubmit, onScondaryClick, className, pri
             onChange={(event) => onChange(event.target.value)}
             value={value}
             defaultValue={defaultValue}
+            type={type}
           />
-          {errors?.[label] && <span className={styles.input_error_msg}>{errorMsg}</span>}
+          {errors?.[name] && <span className={styles.input_error_msg}>{errorMsg}</span>}
         </span>
       ))}
-      <Button type='submit' label={primaryButtonText} className={styles.form_item} />
+      <Button type='submit' label={primaryButtonText} className={styles.form_primary_button} />
       {secondaryButtonText && (
         <Button
           type='button'
