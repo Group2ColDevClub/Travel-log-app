@@ -10,8 +10,10 @@ export default function SignUp() {
   const lastNameValidation = (value: string): boolean => value?.length >= 3;
   const usernameValidation = (value: string): boolean => value?.length >= 3;
   const passwordValidation = (value: string): boolean => value?.length >= 5;
-  const emailValidation = (value: string): boolean => value?.length >= 5;
-
+  const emailValidation = (value: string): boolean => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(value);
+  };
   const signInInputs: Array<FormInputModel> = [
     {
       label: 'First name',
