@@ -12,3 +12,7 @@
 .input_error_msg{
     color: var(--primary-red);
 }
+
+.form_primary_button{
+    margin-top: 5rem;
+}
