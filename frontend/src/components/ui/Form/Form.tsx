@@ -33,7 +33,7 @@ export default function Form({ inputs, onSubmit, onScondaryClick, className, pri
         allErrors[name] = errorMsg;
       }
     });
-    setErrors(() => ({ ...allErrors }));
+    setErrors({ ...allErrors });
     return !errors.length;
   };
 
