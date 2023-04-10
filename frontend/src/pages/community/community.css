@@ -1,0 +1,42 @@
+.community-page {
+  position: relative;
+  /* background-color: gray; */
+  width: 100%;
+  height: 100%;
+}
+.title-block {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 8.25rem 31rem 5rem 31rem;
+  left: 8rem;
+  width: 30.6rem;
+  height: 3.75rem;
+  bottom: 17.25rem;
+  right: 1.25rem;
+  color: var(--white);
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
+.community-header-image {
+  width: 100%;
+  height: 14rem;
+}
+
+.header-img {
+  display: block;
+  flex-direction: column;
+  width: 100%;
+  height: 14rem;
+  background-repeat: no-repeat;
+  place-items: center;
+}
+
+.community-cards {
+  margin-top: 4rem;
+  height: 100rem;
+  /* width: 100%; */
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-template-rows: 35%;
+}
