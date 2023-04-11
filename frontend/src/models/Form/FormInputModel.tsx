@@ -10,4 +10,6 @@ export default interface FormInputModel {
   validationFunc?: (value: any) => boolean;
   errorMsg?: string;
   type?: 'number' | 'date' | 'password' | 'text' | 'email' | 'select';
+  className?: string;
+  labelClassName?: string;
 }

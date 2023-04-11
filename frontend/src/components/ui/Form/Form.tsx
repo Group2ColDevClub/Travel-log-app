@@ -12,9 +12,18 @@ interface IForm {
   primaryButtonText?: string;
   onScondaryClick?: (e: React.SyntheticEvent) => void;
   secondaryButtonText?: string;
+  buttonsClassName?: string;
 }
 
-export default function Form({ inputs, onSubmit, onScondaryClick, className, primaryButtonText = 'Submit', secondaryButtonText }: IForm) {
+export default function Form({
+  inputs,
+  onSubmit,
+  onScondaryClick,
+  className,
+  primaryButtonText = 'Submit',
+  secondaryButtonText,
+  buttonsClassName,
+}: IForm) {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const getData = (formEvent: React.FormEvent<HTMLFormElement>) => {
@@ -48,12 +57,13 @@ export default function Form({ inputs, onSubmit, onScondaryClick, className, pri
 
   return (
     <form className={[styles.form, className].join(' ')} onSubmit={handleSubmit}>
-      {inputs.map(({ label, name, placeholder, onChange = () => {}, value, defaultValue, errorMsg, type }) => (
+      {inputs.map(({ label, name, placeholder, onChange = () => {}, value, defaultValue, errorMsg, type, className, labelClassName }) => (
         <span key={label}>
           <Input
             label={label}
             name={name}
-            className={styles.form_item}
+            className={className}
+            inputLabelClassName={labelClassName}
             placeholder={placeholder}
             onChange={(event) => onChange(event.target.value)}
             value={value}
@@ -63,16 +73,18 @@ export default function Form({ inputs, onSubmit, onScondaryClick, className, pri
           {errors?.[name] && <span className={styles.input_error_msg}>{errorMsg}</span>}
         </span>
       ))}
-      <Button type='submit' label={primaryButtonText} className={styles.form_primary_button} />
-      {secondaryButtonText && (
-        <Button
-          type='button'
-          label={secondaryButtonText}
-          className={styles.form_item}
-          variant='secondary'
-          onClick={(e) => onScondaryClick(e)}
-        />
-      )}
+      <span className={[styles.form_buttons, buttonsClassName].join(' ')}>
+        <Button type='submit' label={primaryButtonText} className={styles.form_primary_button} />
+        {secondaryButtonText && (
+          <Button
+            type='button'
+            label={secondaryButtonText}
+            className={styles.form_item}
+            variant='secondary'
+            onClick={(e) => onScondaryClick(e)}
+          />
+        )}
+      </span>
     </form>
   );
 }

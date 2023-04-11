@@ -10,12 +10,12 @@ export default function PlanTripPage() {
   const handleSubmit = () => {
     console.log('search submited');
   };
-  const handleStartDateChange = (event) => {
-    setStartDate(event.target.value);
+  const handleStartDateChange = (value) => {
+    setStartDate(value);
   };
 
-  const handleEndDateChange = (event) => {
-    setEndDate(event.target.value);
+  const handleEndDateChange = (value) => {
+    setEndDate(value);
   };
 
   const inputsArray = [
@@ -24,6 +24,8 @@ export default function PlanTripPage() {
       name: 'location',
       placeholder: 'Enter location',
       type: 'text',
+      className: styles.form_item,
+      labelClassName: styles.label_wrapper,
     },
     {
       label: 'Start Date',
@@ -32,6 +34,8 @@ export default function PlanTripPage() {
       value: startDate,
       max: endDate,
       type: 'date',
+      className: styles.form_item,
+      labelClassName: styles.label_wrapper,
     },
     {
       label: 'End Date',
@@ -40,12 +44,16 @@ export default function PlanTripPage() {
       value: endDate,
       min: startDate,
       type: 'date',
+      className: styles.form_item,
+      labelClassName: styles.label_wrapper,
     },
     {
       label: 'Number of Travelers',
       name: 'numOfTravelets',
       placeholder: 'Enter number of travelets',
       type: 'text',
+      className: styles.form_item,
+      labelClassName: styles.label_wrapper,
     },
   ];
   return (
@@ -55,7 +63,13 @@ export default function PlanTripPage() {
           <Title variant='h2' title='Plan a Trip' />
           <header>
             <div className={styles.searchTrip}>
-              <Form onSubmit={handleSubmit} inputs={inputsArray} className={styles.form} primaryButtonText='Search' />
+              <Form
+                onSubmit={handleSubmit}
+                inputs={inputsArray}
+                className={styles.form}
+                primaryButtonText='Search'
+                buttonsClassName={styles.button_wrapper}
+              />
             </div>
           </header>
           <div className={styles.restOfThePage}>white background</div>
