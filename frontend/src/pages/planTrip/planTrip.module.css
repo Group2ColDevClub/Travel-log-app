@@ -2,7 +2,6 @@
 .searchTrip {
 display: flex;
 justify-content: space-around;
-padding:1.5rem;
 position: relative;
 margin-right: 2rem;
 } 
@@ -14,7 +13,7 @@ header {
 }
 
 h2 {
-    padding-top: 3rem;
+    padding-top: 5rem;
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -52,4 +51,35 @@ label {
     margin:0rem 0.2rem;
 }
 
+.form {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .form_item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 20px;
+  }
 
+  .form_item label {
+    display: block !important;
+  }
+
+  .form input[type='date'] {
+    text-align: left;
+  }
+
+  .input_wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .submit_Wrapper{
+    margin-top: 2rem;
+  }
+
+  input[type="date"] {
+    text-align: left;
+  }
