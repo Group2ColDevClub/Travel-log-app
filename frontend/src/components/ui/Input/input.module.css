@@ -11,8 +11,15 @@
 }
 
 .input_wrapper {
-  display: flex;
-  flex-direction: row;
+  display: block;
+}
+
+.input_wrapper {
+  display: block;
+}
+
+.input_wrapper label{
+  padding: 10rem;
 }
 
 .l {
