@@ -2,10 +2,12 @@ import PropTypes from 'prop-types';
 import styles from './input.module.css';
 import Label from '../Label/label';
 
-function Input({ value, label, onChange, size, type, className, placeholder, defaultValue, name }) {
+function Input({ value, label, onChange, size, type, className, placeholder, defaultValue, name, inputLabelClassName }) {
   return (
     <div className={styles.input_wrapper}>
-      {label ?? <Label htmlFor={name}>{label}</Label>}
+      <Label htmlFor={name} className={inputLabelClassName}>
+        {label}
+      </Label>
       <input
         type={type}
         name={name}
@@ -37,6 +39,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   name: PropTypes.string,
+  inputLabelClassName: PropTypes.string,
 };
 
 export default Input;
