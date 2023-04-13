@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { FormInputModel } from '../../models';
+import { FormInputModel } from '../../models/index.js';
 import styles from './SignUp.module.css';
 import Form from '../../components/ui/Form/Form.tsx';
 
