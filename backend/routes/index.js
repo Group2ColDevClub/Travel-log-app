@@ -1,5 +1,7 @@
-const TripsRouter = require('./TripsRoute')
+const express = require('express');
+const authentication = require('./Login/Login');
 
-module.exports = {
-    TripsRouter
-};
+module.exports = (app) => {
+    app.use(express.json());
+    app.use('/', authentication);
+}
