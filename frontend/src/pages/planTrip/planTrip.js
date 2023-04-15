@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
+import Card from 'react-bootstrap/Card';
 import styles from './planTrip.module.css';
 import Title from '../../components/ui/Title/Title';
 import Form from '../../components/ui/Form/Form.tsx';
+import Logo from '../../assets/signInPageImg.png';
 
 export default function PlanTripPage() {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const [showCard, setShowCard] = useState(false);
 
-  const handleSubmit = () => {
-    console.log('search submited');
+  const handleSubmit = (data, e) => {
+    e.preventDefault();
+    setShowCard(true);
   };
+
   const handleStartDateChange = (value) => {
     setStartDate(value);
   };
@@ -26,6 +31,8 @@ export default function PlanTripPage() {
       type: 'text',
       className: styles.form_item,
       labelClassName: styles.label_wrapper,
+      validationFunc: (value) => value.length > 0,
+      errorMsg: 'Location is required',
     },
     {
       label: 'Start Date',
@@ -36,6 +43,12 @@ export default function PlanTripPage() {
       type: 'date',
       className: styles.form_item,
       labelClassName: styles.label_wrapper,
+      validationFunc: (value) => {
+        const startDate = new Date(value);
+        const today = new Date();
+        return startDate > today && startDate.getFullYear() < 2100;
+      },
+      errorMsg: 'Start date must be in the future and before end date',
     },
     {
       label: 'End Date',
@@ -46,6 +59,12 @@ export default function PlanTripPage() {
       type: 'date',
       className: styles.form_item,
       labelClassName: styles.label_wrapper,
+      validationFunc: (value) => {
+        const endDate = new Date(value);
+        const today = new Date();
+        return endDate > today && endDate.getFullYear() < 2100;
+      },
+      errorMsg: 'End date must be in the future and after start date',
     },
     {
       label: 'Number of Travelers',
@@ -54,8 +73,11 @@ export default function PlanTripPage() {
       type: 'text',
       className: styles.form_item,
       labelClassName: styles.label_wrapper,
+      validationFunc: (value) => parseInt(value, 10) > 0,
+      errorMsg: 'Number of travelers must be greater than 0',
     },
   ];
+
   return (
     <div>
       <div className={styles.background}>
@@ -72,7 +94,7 @@ export default function PlanTripPage() {
               />
             </div>
           </header>
-          <div className={styles.restOfThePage}>white background</div>
+          <div className={styles.restOfThePage} />
         </div>
       </div>
     </div>

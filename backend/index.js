@@ -1,22 +1,14 @@
-import express from "express";
-import { promises as fs, readFile } from "fs";
+const express = require('express'); 
+const mongoConnect = require('./config/mongoConnect.js')
+const routes = require('./routes');
 
 const app = express();
 
-app.get("/foo/bar", async (request, response) => {
-  try {
-    const data = await fs.readFile("./home.html", "utf-8");
-    response.send(data);
-  } catch (error) {
-    console.error(error);
-    response.status(500).send("Error reading file");
-  }
-});
+app.use(express.json())
 
-app.get("*", (request, response) => {
-  response.send("Page not found");
-});
+app.use('/trips' , routes.TripsRouter)
 
-app.listen(process.env.Port || 8080, () =>
-  console.log("app available on http://localhost:8080/foo/bar")
-);
+app.listen(process.env.PORT, () => {
+  console.log(`Listening on port: ${process.env.PORT}`);
+  mongoConnect();
+})

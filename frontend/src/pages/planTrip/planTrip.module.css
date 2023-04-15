@@ -40,10 +40,11 @@ h2 {
 }
 
 .restOfThePage {
-    background-color: white;
-    height: 77.7vh;
+    background-color: var(--white);
+    height: 72.5vh;
     width: 100%;
     position: absolute;
+    object-fit: cover;
 }
 
 label {
@@ -75,4 +76,8 @@ label {
 
   .button_wrapper {
     margin-top: 1rem;
+  }
+
+  .card_container {
+    color: var(--black) ;
   }

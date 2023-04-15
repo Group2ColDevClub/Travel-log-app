@@ -1,6 +1,7 @@
 # Dependency directories
 node_modules
 jspm_packages
+route.rest
 
 # dotenv environment variable files
 .env
