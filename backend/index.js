@@ -6,8 +6,6 @@ const app = express();
 
 app.use(express.json())
 
-
-// const tripsRoute = require('./routes/TripsRoute.js')
 app.use('/trips' , routes.TripsRouter)
 
 app.listen(process.env.PORT, () => {

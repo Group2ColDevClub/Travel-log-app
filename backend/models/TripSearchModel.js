@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 
 const TripsSearchSchema = mongoose.Schema({
     searchCounts : {
-        type:Number,
+        type: Number,
         require:true,
         min:0
     },
     flights : [{
-        flightID:Number,
+        flightID: Number,
         flighPrice : {
-            type:Number,
+            type: Number,
              min : 1 
         },
         flightStartDate: {
@@ -25,12 +25,12 @@ const TripsSearchSchema = mongoose.Schema({
           required : true,
 
         },
-        flightCompany:String
+        flightCompany: String
     }],
     accomndations : [{
-        accomndationID:Number,
+        accomndationID: Number,
         accomndationPrice : {
-            type:Number,
+            type: Number,
              min : 1 
         },
         accomndationStartDate: {
@@ -46,10 +46,10 @@ const TripsSearchSchema = mongoose.Schema({
           required : true,
 
         },
-        accomndationCompany:String,
+        accomndationCompany: String,
     }],
     numberOfTravelers : Number,
-    destination:String,
+    destination: String,
 })
 
 module.exports = mongoose.model('tripsSearch' , TripsSearchSchema);
