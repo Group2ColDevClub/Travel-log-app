@@ -21,9 +21,10 @@ const verifyToken = (req, res, next) => {
     getToken(req, res, next);
     jwt.verify(req.token, process.env.SECRET, (err, authData) => {
         if (err) {
-            res.status(403);
+            res.status(401).json(err);
         }
         else {
+            console.log(authData);
             next();
         }
     })

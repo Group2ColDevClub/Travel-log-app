@@ -1,9 +1,11 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const router = express.Router();
 
 const getUserFromDB = (userName, password) => {
+    // todo: add get user by data userName and password
     let user = null;
-    if (userName && password){
+    if (userName === 'John Doe' && password){
         user = {
             username: 'John Doe',
             email: 'Johnd@abc.com',
@@ -14,23 +16,18 @@ const getUserFromDB = (userName, password) => {
     return user;
 }
 
-const router = express.Router();
-
 router.post('/login', (req, res, next) => {
     try {
-        const {userName, password} = req.body;
-        // todo: add get user by data userName and password
+        const { userName, password } = req.body;
         const user = getUserFromDB(userName, password);
-        // const user = null;
         if (!user) {
             throw new Error("User not fount");
         }
-        // todo: move secrete to .env 
         const secret = process.env.SECRET;
-        const token = jwt.sign(user, secret, {expiresIn: '1h'});
+        const token = jwt.sign(user, secret, {expiresIn: '1s'});
         res.json({ token });
-    } catch (error) {
-        res.status(403).json(error.message)
+    } catch (err) {
+        res.status(404).json({msg: err.message, error: err});
     }
 });
 

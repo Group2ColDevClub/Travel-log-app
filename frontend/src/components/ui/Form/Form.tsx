@@ -43,7 +43,7 @@ export default function Form({
       }
     });
     setErrors({ ...allErrors });
-    return !errors.length;
+    return !Object.keys(allErrors).length;
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
