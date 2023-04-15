@@ -1,6 +1,7 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import NavBar from './components/ui/navbar/navbar.tsx';
 import { Packages, PlanTrip, SignIn, SignUp, CommunityPage, Cart } from './pages';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App() {
   return (
