@@ -78,10 +78,6 @@ export default function PlanTripPage() {
     },
   ];
 
-  const textColor = {
-    color: 'red',
-  };
-
   return (
     <div>
       <div className={styles.background}>
@@ -98,19 +94,7 @@ export default function PlanTripPage() {
               />
             </div>
           </header>
-          <div className={styles.restOfThePage}>
-            {/* {showCard && (
-              <Card style={{ width: '25rem' }}>
-                <Card.Img variant='top' src={Logo} alt='show this' />
-                <Card.Body>
-                  <Card.Title style={textColor}>Card Title</Card.Title>
-                  <Card.Text style={textColor}>
-                    Some quick example text to build on the card title and make up the bulk of the card content.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            )} */}
-          </div>
+          <div className={styles.restOfThePage} />
         </div>
       </div>
     </div>

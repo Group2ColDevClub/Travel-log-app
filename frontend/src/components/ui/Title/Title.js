@@ -11,7 +11,7 @@ function Title({ title, size, className, variant }) {
 Title.propTypes = {
   title: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['s', 'm', 'l']),
-  className: undefined,
+  className: PropTypes.string,
   variant: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']).isRequired,
 };
 

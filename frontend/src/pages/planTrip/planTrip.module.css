@@ -40,8 +40,8 @@ h2 {
 }
 
 .restOfThePage {
-    background-color: white;
-    height: 72.5vh;
+    background-color: var(--white);
+    height: 264.5%;
     width: 100%;
     position: absolute;
     object-fit: contain;
@@ -79,5 +79,5 @@ label {
   }
 
   .card_container {
-    color: black ;
+    color: var(--black) ;
   }
