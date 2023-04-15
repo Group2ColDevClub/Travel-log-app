@@ -3,8 +3,6 @@
 }
 
 .card-container {
-  /* position: absolute; */
-  margin: 5rem;
   height: 28.6rem;
   width: 26.75rem;
   left: 1.75rem;
@@ -12,6 +10,8 @@
   box-shadow: 0px 0px 15px -5px;
   transition: 0.3s;
   animation: ease-in;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-title {
@@ -35,7 +35,6 @@ h3 {
 }
 
 .card-container:hover {
-  /* transform: scale(1.1); */
   box-shadow: 0px 0px 15px 0px;
 }
 
@@ -75,7 +74,6 @@ h3 {
 }
 
 .card-btn {
-  /* position: absolute; */
   position: relative;
   display: flex;
   flex-direction: row;
@@ -89,4 +87,10 @@ h3 {
   margin-left: 0.7rem;
   margin-top: 0.2rem;
   width: 25rem;
+  color: gray;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6; /* Set the number of lines to display */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
