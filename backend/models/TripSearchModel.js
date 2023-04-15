@@ -3,14 +3,14 @@ const mongoose = require('mongoose');
 const TripsSearchSchema = mongoose.Schema({
     searchCounts : {
         type: Number,
-        require:true,
-        min:0
+        require: true,
+        min: [0,'count must be a non-negative value']
     },
     flights : [{
         flightID: Number,
         flighPrice : {
             type: Number,
-             min : 1 
+            min : [1, 'The minimum price is 1 dollar.'] 
         },
         flightStartDate: {
             type : Date,
@@ -31,7 +31,7 @@ const TripsSearchSchema = mongoose.Schema({
         accomndationID: Number,
         accomndationPrice : {
             type: Number,
-             min : 1 
+            min : [1, 'The minimum price is 1 dollar.'] 
         },
         accomndationStartDate: {
             type : Date,
