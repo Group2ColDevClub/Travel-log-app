@@ -5,7 +5,8 @@
 .card-container {
   height: 28.6rem;
   width: 18.75rem;
-  left: 1.75rem;
+  position: relative;
+  left: 3.75rem;
   overflow: hidden;
   box-shadow: 0px 0px 15px -5px;
   transition: 0.3s;
