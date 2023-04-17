@@ -13,7 +13,7 @@ export default function SignInPage() {
   const signInInputs: Array<FormInputModel> = [
     {
       label: 'User name',
-      name: 'userName',
+      name: 'username',
       placeholder: 'User name',
       errorMsg: 'User name is not valid',
       validationFunc: usernameValidation,

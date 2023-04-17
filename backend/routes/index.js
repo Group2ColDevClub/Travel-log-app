@@ -1,9 +1,9 @@
-const express = require('express');
-const login = require('./Login/Login');
-const authentication = require('./Authenticate/Authenticate');
+const login = require('./Login');
+const authentication = require('./Authenticate');
+const TripsRouter = require('./TripsRoute')
 
-module.exports = (app) => {
-    app.use(express.json());
-    // app.use('/', authentication);
-    app.use('/', login);
-}
+module.exports = {
+    login,
+    authentication,
+    TripsRouter
+};
