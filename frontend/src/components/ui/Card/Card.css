@@ -14,12 +14,12 @@ h3 {
   filter: drop-shadow(0px 4px 19px rgba(0, 0, 0, 0.25));
 }
 .card--s-wide {
-  width: 556px;
-  height: 170px;
+  width: 34.75rem;
+  height: 10.625rem;
 }
 .card--s-wide img {
   overflow: hidden;
-  height: 88.28px;
+  height: 5.5rem;
   width: 100%;
 }
 .card--s-wide .card-title {
@@ -27,14 +27,14 @@ h3 {
 }
 
 .card--s-wide .card-content {
-  top: -64.28px;
-  height: 84px;
+  top: -4rem;
+  height: 5.25rem;
   width: 100%;
 }
 
 .card--m-long {
-  width: 428px;
-  height: 308px;
+  width: 26.75rem;
+  height: 19.25rem;
 }
 
 .card-title {
@@ -51,13 +51,13 @@ h3 {
 
 img {
   overflow: hidden;
-  height: 207px;
+  height: 12.9rem;
   width: 100%;
 }
 
 .card-content {
   position: relative;
-  height: 267px;
+  height: 16.7rem;
   width: 26.75rem;
   padding: 0.5rem;
   top: -5rem;
