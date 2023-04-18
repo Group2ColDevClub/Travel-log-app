@@ -9,6 +9,8 @@ const PORT = process.env.PORT;
 app.use(express.json());
 
 app.use('/trips' , routes.TripsRouter);
+app.use('/login' , routes.login);
+app.use('/auth' , routes.authentication);
 
 // CORS handle
 app.use((req, res, next) => {
