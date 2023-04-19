@@ -17,7 +17,6 @@ const verifyToken = (req, res, next) => {
     try {
         const token = getToken(req);
         const parsedToken = jwt.verify(token, process.env.SECRET);
-        console.log(next);
         res.json({ authorized: true, msg: '' });
         next();
     } catch (error) {
