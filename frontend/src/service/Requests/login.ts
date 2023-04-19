@@ -12,7 +12,8 @@ export const login = async (data: any) => {
     const res = await fetch(url, requestInit);
     const { token, msg, ...rest } = await res.json();
     resData = { status: res.status, msg: msg, ...rest };
-    localStorage.setItem('token', token);
+    if (token) localStorage.setItem('token', token);
+    else localStorage.removeItem('token');
   } catch (error) {
     resData = { ...resData, msg: error.message, error: error };
   }

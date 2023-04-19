@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './planTrip.module.css';
 import Title from '../../components/ui/Title/Title';
 import Form from '../../components/ui/Form/Form.tsx';
 import Logo from '../../assets/signInPageImg.png';
+import { useAuth } from '../../hooks/useAuth.tsx';
 
 export default function PlanTripPage() {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [showCard, setShowCard] = useState(false);
+  // const auth = useAuth();
+  // console.log(auth);
+
+  // useEffect(() => {
+  //   auth.autheticate();
+  // }, [auth]);
 
   const handleSubmit = (data, e) => {
     e.preventDefault();

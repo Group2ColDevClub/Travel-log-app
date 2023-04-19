@@ -2,29 +2,27 @@ const express = require('express');
 const verifyToken = require('./middlewares/VerifyToken');
 const app = express();
 const routes = require('./routes');
+const mongoConnect = require('./config/mongoConnect');
+
 require('dotenv').config();
 
-const PORT = process.env.PORT;
+const PORT = process.env.SERVER_PORT;
 
 app.use(express.json());
-
-app.use('/trips' , routes.TripsRouter);
-app.use('/login' , routes.login);
-app.use('/auth' , routes.authentication);
 
 // CORS handle
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
 
-// TODO: remove! this is for tests!
-app.get('/', verifyToken, (req, res, next) => {
-  console.log("success!");
-});
+app.use('/trips', routes.TripsRouter);
+app.use('/login', routes.login);
+app.use('/authenticate', routes.authentication);
 
-app.listen(PORT, () =>
-  console.log(`app available on http://localhost:${PORT}`)
-);
+app.listen(PORT, () => {
+  console.log(`app available on http://localhost:${PORT}`);
+  mongoConnect();
+});

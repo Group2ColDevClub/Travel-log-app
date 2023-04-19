@@ -1,39 +1,26 @@
+/* eslint-disable no-unused-vars */
 import { ReactNode, createContext, useMemo, useState } from 'react';
 import * as Requests from '../service/Requests';
 
 interface AuthContextType {
-  user: any;
-  signin: (user: string, callback: () => {}) => void;
-  signout: (callback: () => {}) => void;
+  auth: any;
+  autheticate: Function;
 }
 
-const AuthContext = createContext<AuthContextType>(null!);
+export const AuthContext = createContext<AuthContextType>(null!);
 
-function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<any>(null);
+export function AuthProvider({ children }: { children: ReactNode }) {
+  const [auth, setAuth] = useState<boolean>(null);
 
   const autheticate = async () => {
-    // const res = await Requests.authenticate();
-    // const data = await res.json();
+    const res = await Requests.authenticate();
+    console.log('res', res);
+    if (auth !== res.authorized) setAuth(res.authorized);
+    return res;
   };
 
-  const signin = (newUser: string, callback: () => {}) => {
-    // return fakeAuthProvider.signin(() => {
-    //   setUser(newUser);
-    //   callback();
-    // });
-  };
-
-  const signout = (callback: () => {}) => {
-    // return fakeAuthProvider.signout(() => {
-    //   setUser(null);
-    //   callback();
-    // });
-  };
-
-  const value = useMemo(() => ({ user, signin, signout }), [user, signin, signout]);
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
+  const value = { auth, autheticate };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
-
-export { AuthContext };

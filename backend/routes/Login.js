@@ -4,6 +4,7 @@ const router = express.Router();
 const Users = require('../models/UsersModel');
 
 const getUserFromDB = async (username, password) => {
+    console.log(username, password);
     try {
         const user = await Users.findOne({ username: username, password: password });
         return {
@@ -25,8 +26,8 @@ router.post('/', async (req, res, next) => {
         const token = jwt.sign(user, secret, { expiresIn: '10m' });
         res.json({ token });
     } catch (err) {
-        console.log(err);
-        res.status(404).json({ msg: err.message, error: err }).send();
+        console.log(err.message);
+        res.status(404).json({ msg: err.message, error: err });
     }
 });
 
