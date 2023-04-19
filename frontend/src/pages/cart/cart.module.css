@@ -1,0 +1,12 @@
+.background {
+  background-image: url('../../assets/cart_backgroundPhoto.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 51rem;
+}
