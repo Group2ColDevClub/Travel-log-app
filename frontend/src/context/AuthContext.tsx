@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { ReactNode, createContext, useMemo, useState } from 'react';
+import { ReactNode, createContext, useEffect, useState } from 'react';
 import * as Requests from '../service/Requests';
 
 interface AuthContextType {
@@ -13,10 +13,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [auth, setAuth] = useState<boolean>(null);
 
   const autheticate = async () => {
-    const res = await Requests.authenticate();
-    console.log('res', res);
-    if (auth !== res.authorized) setAuth(res.authorized);
-    return res;
+    try {
+      const { authorized, msg } = await Requests.authenticate();
+
+      if (!authorized && msg === 'jwt expired') {
+        const hasNewToken = await Requests.getNewToken();
+        if (!hasNewToken) throw new Error('Failed to reauthenticate');
+        setAuth(hasNewToken);
+      } else if (auth !== authorized) setAuth(authorized);
+      return { authorized, msg };
+    } catch (err) {
+      setAuth(false);
+      return { authorized: false, msg: err.message };
+    }
   };
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values

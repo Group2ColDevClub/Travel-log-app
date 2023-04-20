@@ -1,2 +1,2 @@
 export { login } from './login.ts';
-export { authenticate } from './authenticate.ts';
+export { authenticate, getNewToken } from './authenticate.ts';

@@ -1,25 +1,19 @@
-import { useEffect, useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../hooks/useAuth.tsx';
+import { getNewToken } from '../../../service/Requests/authenticate.ts';
 
 // eslint-disable-next-line no-undef
 export function RequireAuth({ children }: { children: JSX.Element }) {
   const { auth, autheticate } = useAuth();
-  // const [loading, setLoading] = useState<boolean>();
-  const location = useLocation();
 
   const doAuth = async () => {
     try {
-      const authentication = await autheticate();
-      console.log('authentication', authentication);
-      // setLoading(false);
+      const { authorized, msg } = await autheticate();
     } catch (err) {
-      console.log(err.message);
+      // a
     }
   };
   doAuth();
-
-  // if (loading) return <p>loading</p>;
 
   if (!auth) {
     return <p>Go to sign in page</p>;

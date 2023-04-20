@@ -11,12 +11,6 @@ export default function PlanTripPage() {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [showCard, setShowCard] = useState(false);
-  // const auth = useAuth();
-  // console.log(auth);
-
-  // useEffect(() => {
-  //   auth.autheticate();
-  // }, [auth]);
 
   const handleSubmit = (data, e) => {
     e.preventDefault();

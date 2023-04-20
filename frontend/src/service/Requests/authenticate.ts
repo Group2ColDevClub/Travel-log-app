@@ -3,6 +3,11 @@ interface AuthenticateRes {
   msg?: string;
 }
 
+interface NewTokenResponse {
+  token?: string;
+  msg?: string;
+}
+
 export const authenticate = async (): Promise<AuthenticateRes> => {
   try {
     const url = 'http://localhost:8080/authenticate';
@@ -16,12 +21,34 @@ export const authenticate = async (): Promise<AuthenticateRes> => {
       },
     };
     const res = await fetch(url, requestInit);
-    const { authorized } = await res.json();
-    return { authorized };
+    const { authorized, msg } = await res.json();
+    return { authorized, msg };
   } catch (err) {
     return {
       authorized: false,
       msg: err.message,
     };
+  }
+};
+
+export const getNewToken = async () => {
+  try {
+    const url = 'http://localhost:8080/authenticate/token';
+    const refreshToken = localStorage.getItem('refreshToken');
+    if (!refreshToken) throw new Error('No refresh token');
+    const requestInit = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ refreshToken: refreshToken }),
+    };
+    const res = await fetch(url, requestInit);
+    const { token, msg } = await res.json();
+    if (!token) throw new Error(`No new token: ${msg}`);
+    localStorage.setItem('token', token);
+    return true;
+  } catch (err) {
+    return false;
   }
 };
