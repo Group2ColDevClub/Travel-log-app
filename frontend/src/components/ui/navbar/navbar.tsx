@@ -15,7 +15,6 @@ export default function NavBar() {
       title: auth ? 'Sign out' : 'Sign in',
       path: '/sign_in',
       onClick: async () => {
-        console.log('hi');
         await logout();
         await autheticate();
       },

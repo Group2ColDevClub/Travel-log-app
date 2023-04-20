@@ -26,15 +26,6 @@ const UsersSchema = mongoose.Schema({
         type: Date,
         default: () => Date.now()
     },
-    // creditCard: {
-    //     cardNumber: {
-    //         type: Number
-    //     },
-    //     expire: { 
-    //         type: Date
-    //     },
-    //     // validate: () => true
-    // },
     postsLiked: {
         type: Number,
         min: 0,

@@ -8,9 +8,6 @@ const getToken = (req, res) => {
         req.token = token;
         return token
     } catch { }
-    // } catch (error) {
-    //     res.status(403).json(error.message);
-    // }
 }
 
 const verifyToken = (req, res, next) => {
