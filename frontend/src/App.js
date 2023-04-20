@@ -1,6 +1,6 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext.tsx';
-import { RequireAuth } from './components/custom/RequireAuth/RequireAuth.tsx';
+import { RequireAuth } from './pages/RequireAuth/RequireAuth.tsx';
 import NavBar from './components/ui/navbar/navbar.tsx';
 import { Packages, PlanTrip, SignIn, SignUp, CommunityPage, Cart } from './pages';
 

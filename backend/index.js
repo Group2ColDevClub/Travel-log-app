@@ -20,6 +20,7 @@ app.use((req, res, next) => {
 
 app.use('/trips', routes.TripsRouter);
 app.use('/login', routes.login);
+app.use('/logout', routes.logout);
 app.use('/authenticate', routes.authentication);
 
 app.listen(PORT, () => {

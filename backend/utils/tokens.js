@@ -1,3 +1,3 @@
-const refreshTokens = [];
+let refreshTokens = [];
 
 module.exports = { refreshTokens };

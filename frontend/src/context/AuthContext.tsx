@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import { ReactNode, createContext, useEffect, useState } from 'react';
+import { ReactNode, createContext, useState } from 'react';
 import * as Requests from '../service/Requests';
 
 interface AuthContextType {
@@ -15,11 +14,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const autheticate = async () => {
     try {
       const { authorized, msg } = await Requests.authenticate();
-
       if (!authorized && msg === 'jwt expired') {
-        const hasNewToken = await Requests.getNewToken();
-        if (!hasNewToken) throw new Error('Failed to reauthenticate');
-        setAuth(hasNewToken);
+        const newToken = await Requests.getNewToken();
+        if (!newToken.token) throw new Error('Failed to reauthenticate');
+        setAuth(true);
       } else if (auth !== authorized) setAuth(authorized);
       return { authorized, msg };
     } catch (err) {

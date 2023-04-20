@@ -31,7 +31,7 @@ export const authenticate = async (): Promise<AuthenticateRes> => {
   }
 };
 
-export const getNewToken = async () => {
+export const getNewToken = async (): Promise<NewTokenResponse> => {
   try {
     const url = 'http://localhost:8080/authenticate/token';
     const refreshToken = localStorage.getItem('refreshToken');
@@ -44,11 +44,11 @@ export const getNewToken = async () => {
       body: JSON.stringify({ refreshToken: refreshToken }),
     };
     const res = await fetch(url, requestInit);
-    const { token, msg } = await res.json();
+    const { token, msg }: NewTokenResponse = await res.json();
     if (!token) throw new Error(`No new token: ${msg}`);
     localStorage.setItem('token', token);
-    return true;
+    return { token, msg };
   } catch (err) {
-    return false;
+    return { msg: err.message };
   }
 };
