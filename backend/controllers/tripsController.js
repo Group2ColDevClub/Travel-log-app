@@ -15,6 +15,9 @@ const getAllTrips = async (req, res) => {
 const getTripById = async (req, res) => {
     try {
         const tripSearches = await TripsSearch.findById(req.params.id);
+        if(tripSearches === null){
+            res.status(204).send('can not find by this id');
+        }
         res.send(tripSearches);
     } catch (e) {
         console.log(e);
@@ -35,10 +38,11 @@ const createTrip = async (req, res, next) => {
 };
 
 // Update a trip by ID
-const updateTripById = async (req, res,next) => {
-    if (req.body.numberOfTravelers != null)
+const updateTripById = async (req, res, next) => {
+    const {numberOfTravelers,destination} = req.body;
+    if (numberOfTravelers != null)
         res.tripSearches.numberOfTravelers = req.body.numberOfTravelers;
-    if (req.body.destination != null)
+    if (destination != null)
         res.tripSearches.destination = req.body.destination;
     try {
         const updatedTripSearched = await res.tripSearches.save();
