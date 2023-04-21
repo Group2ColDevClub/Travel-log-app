@@ -8,9 +8,6 @@ import Card from '../../components/ui/Card/Card.js';
 import './community.css';
 
 export default function CommunityPage() {
-  const [likes, setlikes] = useState(0);
-  const [comments, setComments] = useState([]);
-
   return (
     <div className='community-page'>
       <div className='header-img'>
