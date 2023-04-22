@@ -7,7 +7,7 @@ const getAllTrips = async (req, res) => {
         res.json(tripSearches);
     } catch (e) {
         console.log(e);
-        res.status(500).send({ message: e.message });
+        res.status(500).send({ msg: e.message });
     }
 };
 
@@ -21,7 +21,7 @@ const getTripById = async (req, res) => {
         res.send(tripSearches);
     } catch (e) {
         console.log(e);
-        res.status(500).send({ message: e.message });
+        res.status(500).send({ msg: e.message });
     }
 };
 
@@ -33,7 +33,7 @@ const createTrip = async (req, res, next) => {
         const newSearchedTrips = await tripSearched.save();
         res.status(201).json(newSearchedTrips);
     } catch (e) {
-        res.status(400).send({ message: e.message });
+        res.status(400).send({ msg: e.message });
     }
 };
 
@@ -48,7 +48,7 @@ const updateTripById = async (req, res, next) => {
         const updatedTripSearched = await res.tripSearches.save();
         res.json(updatedTripSearched);
     } catch (e) {
-        res.status(400).send({ message: e.message });
+        res.status(400).send({ msg: e.message });
     }
 };
 
