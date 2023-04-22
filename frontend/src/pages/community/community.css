@@ -74,3 +74,9 @@ button {
   cursor: pointer;
 }
 
+.btn-add-post {
+  position: fixed;
+  bottom: 4rem;
+  right: 2rem;
+  cursor: pointer;
+}

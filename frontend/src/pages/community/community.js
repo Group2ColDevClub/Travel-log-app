@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { AiFillLike } from 'react-icons/ai';
 import { MdAddComment } from 'react-icons/md';
+import { BsPlusCircle } from 'react-icons/bs';
 import cardImg from '../../assets/cardImg.png';
 import headerImg from '../../assets/communityImg.png';
 import travelersPosts from '../../data/travelersPosts';
@@ -46,6 +47,9 @@ export default function CommunityPage() {
           />
         ))}
       </div>
+      <button className='btn-add-post'>
+        <BsPlusCircle fill='red' size='3rem' />
+      </button>
     </div>
   );
 }
