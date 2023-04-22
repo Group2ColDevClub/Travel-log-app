@@ -5,7 +5,7 @@ function Card({ title, image, description, size, variant, Footer, DescriptionHea
   const cardClassName = `card ${size && variant ? `card--${size}-${variant}` : `m-${variant}`}`;
   return (
     <div className={cardClassName}>
-      {image && <img src={image} alt='backgroundImage' />}
+      {image && <img className='card-post-image' src={image} alt='backgroundImage' />}
       <div className='card-title'>
         <h3>{title}</h3>
       </div>
@@ -22,7 +22,7 @@ Card.propTypes = {
   description: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['s', 'm', 'l']).isRequired, // s=Cart,m=planTrip & Packages,l=Community
   DescriptionHeader: PropTypes.node,
-  variant: PropTypes.string,
+  variant: PropTypes.oneOf(['wide', 'long']),
   image: PropTypes.string,
   Footer: PropTypes.node,
 };
