@@ -40,9 +40,9 @@ const createTrip = async (req, res, next) => {
 // Update a trip by ID
 const updateTripById = async (req, res, next) => {
     const {numberOfTravelers,destination} = req.body;
-    if (numberOfTravelers != null)
+    if (numberOfTravelers)
         res.tripSearches.numberOfTravelers = numberOfTravelers;
-    if (destination != null)
+    if (destination)
         res.tripSearches.destination = destination;
     try {
         const updatedTripSearched = await res.tripSearches.save();
