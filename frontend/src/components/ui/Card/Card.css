@@ -1,6 +1,3 @@
-* {
-  border-radius: 0.4rem;
-}
 h3 {
   margin: 0.6rem;
 }
@@ -12,15 +9,18 @@ h3 {
   left: 1.75rem;
   overflow: hidden;
   filter: drop-shadow(0rem 0.25rem 1.2rem rgba(0, 0, 0, 0.25));
+  border-radius: 0.4rem;
 }
 .card--s-wide {
   width: 34.75rem;
   height: 10.625rem;
+  border-radius: 0.4rem;
 }
 .card--s-wide .card-post-image {
   overflow: hidden;
   height: 5.5rem;
   width: 100%;
+  border-radius: 0.4rem;
 }
 .card--s-wide .card-title {
   top: -6rem;
@@ -35,6 +35,7 @@ h3 {
 .card--m-long {
   width: 26.75rem;
   height: 19.25rem;
+  border-radius: 0.4rem;
 }
 
 .card-title {
@@ -51,8 +52,9 @@ h3 {
 
 .card-post-image {
   overflow: hidden;
-  height: 12.93rem;
+  height: 12.9rem;
   width: 100%;
+  border-radius: 0.4rem;
 }
 
 .card-content {
