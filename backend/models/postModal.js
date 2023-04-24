@@ -3,11 +3,17 @@ const mongoose = require("mongoose");
 const postSchema = mongoose.Schema({
   title: {
     type: String,
-    require: true,
+    required: true,
   },
   location: {
     type: String,
-    require: true,
+    required: true,
+    validate: {
+      validator: function (v) {
+        return /^[a-zA-Z]{3,}$/.test(v);
+      },
+      message: (props) => `${props.value} is not a valid location!`,
+    },
   },
   author: {
     type: String,
@@ -15,7 +21,8 @@ const postSchema = mongoose.Schema({
   },
   likes: {
     type: Number,
-    require: true,
+    required: true,
+    default: 0,
   },
   comments: [
     {

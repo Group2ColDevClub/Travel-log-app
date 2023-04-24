@@ -18,7 +18,7 @@ const getPostById = async (req, res) => {
     if (!post) {
       res.status(204).send("can not find by this id");
     }
-    res.send(posts);
+    res.send(post);
   } catch (e) {
     console.log(e);
     res.status(500).send({ message: e.message });
@@ -67,7 +67,7 @@ const createPost = async (req, res) => {
   const { title, location, author, likes, comments, date, photo } = req.body;
   try {
     const post = new Post({
-  title: title,
+      title,
       location,
       author,
       likes,
