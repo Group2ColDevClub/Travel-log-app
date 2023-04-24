@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
-import {
+const {
   getAllPosts,
   getPostById,
   createPost,
   deletePost,
   updateTripById,
-} from "../controllers/PostController";
+} = require("../controllers/PostController");
 
 // get all post
 router.get("/", getAllPosts);

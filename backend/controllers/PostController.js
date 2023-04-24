@@ -67,7 +67,7 @@ const createPost = async (req, res) => {
   const { title, location, author, likes, comments, date, photo } = req.body;
   try {
     const post = new Post({
-      title,
+  title: title,
       location,
       author,
       likes,
