@@ -31,7 +31,8 @@ const deletePost = async (req, res) => {
     if (!post) {
       res.status(204).send("can not find by this id");
     }
-    post.remove();
+    await post.deleteOne();
+    res.status(200).send("Post deleted successfully.");
   } catch (e) {
     console.log(e);
     res.status(500).send({ message: e.message });
@@ -46,11 +47,11 @@ const updateTripById = async (req, res) => {
 
   const { comments, likes } = req.body;
 
-  if (comments != null) {
+  if (comments !== undefined) {
     post.comments = comments;
   }
 
-  if (likes != null) {
+  if (likes !== undefined) {
     post.likes = likes;
   }
 
@@ -61,6 +62,7 @@ const updateTripById = async (req, res) => {
     res.status(400).send({ message: e.message });
   }
 };
+
 
 // create post
 const createPost = async (req, res) => {

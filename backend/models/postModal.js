@@ -5,7 +5,7 @@ const commentSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  userName: {
+  username: {
     type: String,
     required: true,
   },
@@ -35,12 +35,13 @@ const postSchema = mongoose.Schema({
     required: true,
     default: 0,
   },
-  
+
   comments: [commentSchema],
-  
+
   date: {
     type: Date,
     require: true,
+    default: () => Date.now(),
   },
   photo: {
     type: String,
