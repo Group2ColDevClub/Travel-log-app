@@ -1,12 +1,8 @@
-import { useState } from 'react';
-import { AiFillLike } from 'react-icons/ai';
-import { MdAddComment } from 'react-icons/md';
 import { BsPlusCircle } from 'react-icons/bs';
-import cardImg from '../../assets/cardImg.png';
+import Post from '../../components/Post/Post';
 import headerImg from '../../assets/communityImg.png';
 import travelersPosts from '../../data/travelersPosts';
-import Card from '../../components/ui/Card/Card.js';
-import './community.css';
+import './Community.css';
 
 export default function CommunityPage() {
   return (
@@ -19,32 +15,7 @@ export default function CommunityPage() {
       </div>
       <div className='community-cards'>
         {travelersPosts.map((post) => (
-          <Card
-            key={post.id}
-            title={post.title}
-            image={cardImg}
-            DescriptionHeader={
-              <div className='community-desc-header'>
-                <h3>{post.location}</h3>
-                <h5>{post.author}</h5>
-              </div>
-            }
-            description={post.description}
-            Footer={
-              <div className='community-footer'>
-                <p className='like-counter'> {post.likes.length}</p>
-                <button>
-                  <AiFillLike className='community-like' fill='' size='1.6rem' />
-                </button>
-                <button>
-                  <MdAddComment className='community-add-comment' fill='' size='1.6rem' />
-                </button>
-                <p className='comments-counter'>{post.comments.length}</p>
-              </div>
-            }
-            size='m'
-            variant='wide'
-          />
+          <Post key={post.id} post={post} />
         ))}
       </div>
       <button className='btn-add-post'>
