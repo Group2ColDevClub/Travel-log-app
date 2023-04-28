@@ -1,3 +1,4 @@
+import styles from './Post.module.css';
 import Card from '../ui/Card/Card';
 import PostFooter from '../PostFooter/PostFooter';
 
@@ -8,9 +9,9 @@ function Post({ post }) {
       title={post.title}
       image={post.image}
       DescriptionHeader={
-        <div className='community-desc-header'>
-          <h3>{post.location}</h3>
-          <h5>{post.author}</h5>
+        <div className={styles.community_desc_header}>
+          <h3 className={styles.location_header}>{post.location}</h3>
+          <h5 className={styles.author_name}>{post.author}</h5>
         </div>
       }
       description={post.description}

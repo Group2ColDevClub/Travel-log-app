@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { AiFillLike } from 'react-icons/ai';
 import { MdAddComment } from 'react-icons/md';
+import styles from './PostFooter.module.css';
 
 function PostFooter({ postId, likes, comments }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,17 +21,15 @@ function PostFooter({ postId, likes, comments }) {
   const isPostLiked = isLiked.includes(postId);
 
   return (
-    <div className='community-footer'>
-      <p className='like-counter'> {likes.length}</p>
+    <div className={styles.community_footer}>
+      <p className={styles.like_counter}> {likes.length}</p>
       <button onClick={() => handleLikeClick(postId)}>
-        <AiFillLike className='community-like' fill={isPostLiked ? 'red' : ''} size='1.6rem' />
+        <AiFillLike className={`${styles['community-icon']}`} fill={isPostLiked ? 'red' : ''} />
       </button>
       <button onClick={handleCommentClick}>
-        <MdAddComment className='community-add-comment' fill='' size='1.6rem' />
+        <MdAddComment className={`${styles['community-icon']}`} fill='' />
       </button>
-      <p className='comments-counter'>{comments.length}</p>
-
-      {/* {isModalOpen && <Modal />} */}
+      <p className={styles.comments_counter}>{comments.length}</p>
     </div>
   );
 }
