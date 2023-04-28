@@ -2,13 +2,12 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const UsersSchema = mongoose.Schema({
-    userName: {
+    username: {
         type: String,
         min: 2,
-        lowercase: true,
         require: true,
-        validtor: function (value) { return value > 2 },
-        message: 'invalid userName'
+        unique: true,
+        message: 'invalid username'
     },
     password: {
         type: String,
@@ -17,7 +16,7 @@ const UsersSchema = mongoose.Schema({
     },
     email: {
         type: String,
-        minLength: 2,
+        min: 5,
         require: true,
         validator: function (value) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

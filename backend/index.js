@@ -22,11 +22,12 @@ app.post('/create', async (req, res, next) => {
     const UsersModel = require('./models/UsersModel');
     const reqBody = req.body;
     const newUser = new UsersModel({
-      userName: reqBody.userName, 
+      username: reqBody.username, 
       password: reqBody.password,
       email: reqBody.email,
     });
     const savedUser = await newUser.save();
+    console.log(savedUser);
     res.status(200).json(savedUser)
   } catch (err) {
     console.log(err.message);

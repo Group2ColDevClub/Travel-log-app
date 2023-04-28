@@ -29,7 +29,7 @@ router.post('/token', (req, res, next) => {
         const parsedUser = jwt.verify(refreshToken, refreshSecret);
         const userForToken = {
             id: parsedUser.id,
-            userName: parsedUser.userName,
+            username: parsedUser.username,
         }
         const token = jwt.sign(userForToken, secret, { expiresIn: '1m' });
         res.status(200).json({ token })
