@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import Card from 'react-bootstrap/Card';
+import axios from 'axios';
+// import Card from 'react-bootstrap/Card';
+import Card from '../../components/ui/Card/Card.js';
 import styles from './planTrip.module.css';
 import Title from '../../components/ui/Title/Title';
 import Form from '../../components/ui/Form/Form.tsx';
@@ -10,9 +12,15 @@ export default function PlanTripPage() {
   const [endDate, setEndDate] = useState('');
   const [showCard, setShowCard] = useState(false);
 
-  const handleSubmit = (data, e) => {
+  const handleSubmit = async (data, e) => {
     e.preventDefault();
-    setShowCard(true);
+    try {
+      const response = await axios.post('http://localhost:5000/search', data);
+      console.log(response.data);
+      setShowCard(true);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleStartDateChange = (value) => {
@@ -68,9 +76,9 @@ export default function PlanTripPage() {
     },
     {
       label: 'Number of Travelers',
-      name: 'numOfTravelets',
-      placeholder: 'Enter number of travelets',
-      type: 'text',
+      name: 'numOfTravelers',
+      placeholder: 'Enter number of travelers',
+      type: 'number',
       className: styles.form_item,
       labelClassName: styles.label_wrapper,
       validationFunc: (value) => parseInt(value, 10) > 0,
@@ -78,6 +86,7 @@ export default function PlanTripPage() {
     },
   ];
 
+  const textColor = `red`;
   return (
     <div>
       <div className={styles.background}>
@@ -95,6 +104,9 @@ export default function PlanTripPage() {
             </div>
           </header>
           <div className={styles.restOfThePage} />
+          {showCard && (
+            <Card size='m' description='Some quick example text to build on the card title and make up the bulk of the card content.' />
+          )}
         </div>
       </div>
     </div>

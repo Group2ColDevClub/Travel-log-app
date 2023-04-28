@@ -1,6 +1,7 @@
 const TripsSearch = require('../models/TripSearchModel');
+const axios = require('axios');
+require('dotenv').config();
 
-// Get all trips
 const getAllTrips = async (req, res) => {
     try {
         const tripSearches = await TripsSearch.find();
@@ -11,7 +12,6 @@ const getAllTrips = async (req, res) => {
     }
 };
 
-// Get a single trip by ID
 const getTripById = async (req, res) => {
     try {
         const tripSearches = await TripsSearch.findById(req.params.id);
@@ -25,19 +25,6 @@ const getTripById = async (req, res) => {
     }
 };
 
-// Create a new trip
-const createTrip = async (req, res, next) => {
-    const { numberOfTravelers, destination } = req.body;
-    const tripSearched = new TripsSearch({ numberOfTravelers: numberOfTravelers, destination: destination });
-    try {
-        const newSearchedTrips = await tripSearched.save();
-        res.status(201).json(newSearchedTrips);
-    } catch (e) {
-        res.status(400).send({ msg: e.message });
-    }
-};
-
-// Update a trip by ID
 const updateTripById = async (req, res, next) => {
     const {numberOfTravelers,destination} = req.body;
     if (numberOfTravelers)
@@ -52,9 +39,182 @@ const updateTripById = async (req, res, next) => {
     }
 };
 
+const createTrip = async (req, res, next) => {
+    const { numberOfTravelers, destination , startDate , endDate } = req.body;
+    const existingTrip = await TripsSearch.findOne({
+        destination: destination,
+        startDate : startDate,
+        endDate : endDate,
+        numberOfTravelers : numberOfTravelers
+    });
+
+    
+    if(existingTrip)
+        res.json(existingTrip); 
+    
+    const searchedTrip = await searchNewTrip(req, res, next);
+};
+
+const searchNewTrip = async(req, res, next) => {
+    const { location, numberOfTravelers, startDate, endDate } = req.body;
+    
+    const startDateObj = new Date(startDate);
+    const endDateObj = new Date(endDate);
+    try{
+        const {data : entityData} = await axios.post('https://partners.api.skyscanner.net/apiservices/v3/autosuggest/flights', {
+            query:{
+                market: "US",
+                locale: "en-US",
+                searchTerm : location
+              },
+            limit: 50
+          },
+          {
+            headers: {
+              'x-api-key': process.env.API_KEY,
+              'Content-Type': 'application/json'
+            }
+          },
+         );
+
+        if(!(entityData?.places?.[0]))
+                res.send(404)
+
+        let entityId = entityData.places[0].entityId;
+
+          if (entityId) {
+            const query = createQueryData(entityId, startDateObj, endDateObj, numberOfTravelers);
+
+            const {data : flightRes} = await axios.post('https://partners.api.skyscanner.net/apiservices/v3/flights/live/search/create',  {query}, {
+                headers: {
+                    'x-api-key': process.env.API_KEY,
+                    'Content-Type': 'application/json'
+                }
+            });
+        
+        function formatPrice(price) {
+            return (price / 1000).toFixed(2);
+          }
+          
+          function getDeepLink(pricingOption) {
+            return pricingOption.items[0].deepLink || null;
+          }
+          
+          function getDateTime(segmentId, segments) {
+            const dateTimeObj = segments[segmentId].departureDateTime;
+            const formattedDate = new Date(dateTimeObj.year, dateTimeObj.month - 1, dateTimeObj.day, dateTimeObj.hour, dateTimeObj.minute, dateTimeObj.second);
+            return formattedDate;
+          }
+          
+          function formatItinerary(key, itinerary, segments) {
+            const pricingOption = itinerary.pricingOptions[0];
+            const price = pricingOption.price.amount;
+            const formattedPrice = formatPrice(price);
+            const deepLink = getDeepLink(pricingOption);
+            const arrivalSegment = pricingOption.items[0]?.fares[0].segmentId;
+            const arrivalDate = getDateTime(arrivalSegment, segments);
+            const returnSegment = pricingOption.items[0].fares[pricingOption.items[0].fares.length - 1].segmentId;
+            const returnDate = getDateTime(returnSegment, segments);
+            return { 
+                price: formattedPrice,
+                deepLink: deepLink,
+                arrivalDate: arrivalDate,
+                returnDate: returnDate,
+                arrivalSeg: arrivalSegment,
+                returnSeg: returnSegment                
+                };
+          }
+          
+          function formatResponse(flightRes) {
+            const itineraryKeys = Object.keys(flightRes.content.results.itineraries);
+            const segments = flightRes.content.results.segments;
+            const formattedRes = itineraryKeys.map(key => {
+              const itinerary = flightRes.content.results.itineraries[key];
+              const formattedItinerary = formatItinerary(key, itinerary, segments);
+              return formattedItinerary;
+            });
+            return formattedRes;
+          }
+          
+          const formattedRes = formatResponse(flightRes);
+
+          const flights = formattedRes.map((flight) => ({
+              flightID: [{ arrivalSegment: flight.arrivalSeg, returnSegment: flight.returnSeg }],
+              flightPrice: flight.price,
+              flightStartDate: flight.arrivalDate,
+              flightEndDate: flight.returnDate,
+              deepLink: flight.deepLink,
+          }));
+
+          const tripSearched = new TripsSearch({
+              numberOfTravelers: numberOfTravelers,
+              destination: location,
+              flights: flights,
+          });
+  
+      try {
+          const newSearchedTrips = await tripSearched.save();
+          res.status(201).json(newSearchedTrips);
+      } catch (e) {
+          res.status(400).send({ msg: e.message , err: "internal server error or bad request" });
+      }
+    }
+
+            else
+                res.status(404).send('city is not found')
+          
+    }catch(e){
+        res.status(500).send({msg: e.message , err: "external server error"});
+    }
+};
+
+function createQueryData(entityId, startDateObj, endDateObj, numberOfTravelers) {
+    return {
+        market: "US",
+        locale: "en-US",
+        currency: "USD",
+        queryLegs: [
+            {
+                originPlaceId: {
+                    iata: "TLV"
+                },
+                destinationPlaceId: {
+                    entityId: entityId
+                },
+                date: {
+                    year: startDateObj.getFullYear(),
+                    month: startDateObj.getMonth() + 1,
+                    day: startDateObj.getDate()
+                }
+            },
+            {
+                originPlaceId: {
+                    entityId: entityId
+                },
+                destinationPlaceId: {
+                    iata: "TLV"
+                },
+                date: {
+                    year: endDateObj.getFullYear(),
+                    month: endDateObj.getMonth() + 1,
+                    day: endDateObj.getDate()
+                }
+            }
+        ],
+        adults: numberOfTravelers,
+        childrenAges: [],
+        cabinClass: "CABIN_CLASS_ECONOMY",
+        excludedAgentsIds: [],
+        excludedCarriersIds: [],
+        includedAgentsIds: [],
+        includedCarriersIds: []
+    };
+}
+
 module.exports = {
     getAllTrips,
     getTripById,
     createTrip,
-    updateTripById
+    updateTripById,
+    searchNewTrip
 };
