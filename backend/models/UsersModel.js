@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+
 const UsersSchema = mongoose.Schema({
-    username: {
+    userName: {
         type: String,
         min: 2,
         lowercase: true,
         require: true,
         validtor: function (value) { return value > 2 },
-        message: 'invalid username'
+        message: 'invalid userName'
     },
     password: {
         type: String,
@@ -17,7 +19,7 @@ const UsersSchema = mongoose.Schema({
         type: String,
         minLength: 2,
         require: true,
-        validator: function(value) {
+        validator: function (value) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return emailRegex.test(value);
         }
@@ -44,6 +46,26 @@ const UsersSchema = mongoose.Schema({
         packageID: Number,
         createdAt: Date
     }],
+    trips: [{
+        location: String,
+        date: Date,
+        img: String,
+    }]
+});
+
+UsersSchema.pre('save', async function(next) {
+    const user = this;
+    if (!user.isModified('password')) {
+        return next();
+    }
+    try {
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(user.password, salt);
+        user.password = hashedPassword;
+        next();
+    } catch (error) {
+        next(error);
+    }
 });
 
 module.exports = mongoose.model('Users', UsersSchema);

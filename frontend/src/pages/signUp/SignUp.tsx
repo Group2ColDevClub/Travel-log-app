@@ -8,7 +8,7 @@ export default function SignUp() {
 
   const firstNameValidation = (value: string): boolean => value?.length >= 3;
   const lastNameValidation = (value: string): boolean => value?.length >= 3;
-  const usernameValidation = (value: string): boolean => value?.length >= 3;
+  const userNameValidation = (value: string): boolean => value?.length >= 3;
   const passwordValidation = (value: string): boolean => value?.length >= 5;
   const emailValidation = (value: string): boolean => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -34,7 +34,7 @@ export default function SignUp() {
       name: 'userName',
       placeholder: 'User name',
       errorMsg: 'User name is not valid',
-      validationFunc: usernameValidation,
+      validationFunc: userNameValidation,
     },
     {
       label: 'Password',

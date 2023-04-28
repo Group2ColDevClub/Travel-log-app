@@ -1,25 +1,27 @@
 const jwt = require('jsonwebtoken');
 
-const getToken = (req, res) => {
+const getToken = (req) => {
     try {
         const bearerHeader = req.headers['authorization'];
         if (!bearerHeader) throw new Error('Missing access token');
         const [_, token] = bearerHeader.split(' ');
-        req.token = token;
         return token
-    } catch { }
-}
-
-const verifyToken = (req, res, next) => {
-    try {
-        const token = getToken(req);
-        const parsedToken = jwt.verify(token, process.env.SECRET);
-        res.json({ authorized: true, msg: '' });
-        next();
-    } catch (error) {
-        console.log(error.message);
-        res.status(403).json({ authorized: false, msg: error.message });
+    } catch (err) { 
+        console.log(err.message);
     }
 }
 
-module.exports = verifyToken;
+const verifyToken = (token) => {
+    try {
+        const parsedToken = jwt.verify(token, process.env.SECRET);
+        return true;
+    } catch (error) {
+        console.log(error.message);
+        return false;
+    }
+}
+
+module.exports = {
+    getToken,
+    verifyToken
+};

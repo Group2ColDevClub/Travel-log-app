@@ -14,6 +14,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const autheticate = async () => {
     try {
       const { authorized, msg } = await Requests.authenticate();
+      console.log(msg, authorized);
       if (!authorized && msg === 'jwt expired') {
         const newToken = await Requests.getNewToken();
         if (!newToken.token) throw new Error('Failed to reauthenticate');

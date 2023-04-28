@@ -2,7 +2,7 @@
 
 ```javascript
 	userID : Number,
-    username : {
+    userName : {
         type: string,
          minLength:2,
          lowercase: true,
@@ -61,7 +61,7 @@
   location: {city : string , country : string, Validate:Func, minLength:2}
   Description: Number,
   photos : [String], // remote service url's location
-  comments: [{description: string , username: string , likes : string}]
+  comments: [{description: string , userName: string , likes : string}]
   likes : Number,
   PostViewes : Number,
   createDate : Date,

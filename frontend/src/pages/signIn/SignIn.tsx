@@ -7,16 +7,16 @@ import styles from './SignIn.module.css';
 export default function SignInPage() {
   const navigate = useNavigate();
 
-  const usernameValidation = (value: string): boolean => value?.length >= 3;
+  const userNameValidation = (value: string): boolean => value?.length >= 3;
   const passwordValidation = (value: string): boolean => value?.length >= 5;
 
   const signInInputs: Array<FormInputModel> = [
     {
       label: 'User name',
-      name: 'username',
+      name: 'userName',
       placeholder: 'User name',
       errorMsg: 'User name is not valid',
-      validationFunc: usernameValidation,
+      validationFunc: userNameValidation,
     },
     {
       label: 'Password',
