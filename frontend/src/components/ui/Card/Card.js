@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import './Card.css';
 
-function Card({ title, image, description, size, variant, Footer, DescriptionHeader, className }) {
+function Card({ title, image, description, size, variant, Footer, DescriptionHeader }) {
   const cardClassName = `card ${size && variant ? `card--${size}-${variant}` : `m-${variant}`}`;
   return (
     <div className={cardClassName}>
