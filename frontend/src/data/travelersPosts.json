@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "title": "Title-1",
+    "image": "https://i.postimg.cc/Cx7cM3hY/cardImg.png",
+    "location": "Tel-Aviv",
+    "author": "J.A",
+    "description": "our travel was amazing ...",
+    "likes": [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+    "comments": [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+  },
+  {
+    "id": 2,
+    "title": "Title-2",
+    "image": "https://i.postimg.cc/Cx7cM3hY/cardImg.png",
+    "location": "London",
+    "author": "A.G",
+    "description": "our travel was amazing ...",
+    "likes": [],
+    "comments": []
+  },
+  {
+    "id": 3,
+    "title": "Title-3",
+    "image": "https://i.postimg.cc/Cx7cM3hY/cardImg.png",
+    "location": "USA",
+    "author": "F.T",
+    "description": "our travel was amazing ...",
+    "likes": [],
+    "comments": []
+  },
+  {
+    "id": 4,
+    "title": "Title-4",
+    "image": "https://i.postimg.cc/Cx7cM3hY/cardImg.png",
+    "location": "Singapur",
+    "author": "T.P",
+    "description": "our travel was amazing ...",
+    "likes": [],
+    "comments": []
+  },
+  {
+    "id": 5,
+    "title": "Title-5",
+    "image": "https://i.postimg.cc/Cx7cM3hY/cardImg.png",
+    "location": "Haifa",
+    "author": "A.G",
+    "description": "our travel was amazing ...",
+    "likes": [],
+    "comments": []
+  },
+  {
+    "id": 6,
+    "title": "Title-6",
+    "image": "https://i.postimg.cc/Cx7cM3hY/cardImg.png",
+    "location": "Eilat",
+    "author": "A.G",
+    "description": "our travel was amazing ...",
+    "likes": [],
+    "comments": []
+  }
+]

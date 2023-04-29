@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Card from 'react-bootstrap/Card';
 import styles from './planTrip.module.css';
 import Title from '../../components/ui/Title/Title';
 import Form from '../../components/ui/Form/Form.tsx';

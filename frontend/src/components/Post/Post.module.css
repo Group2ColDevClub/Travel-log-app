@@ -1,0 +1,12 @@
+.community_desc_header {
+  margin-left: 0.3rem;
+  color: var(--black);
+}
+
+.location_header {
+    color: black;
+    margin: 0;
+}
+.author_name {
+    color: black;
+}

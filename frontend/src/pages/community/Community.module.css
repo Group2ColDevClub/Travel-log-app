@@ -1,0 +1,50 @@
+.community_page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--white);
+}
+.title_block {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top: -13.5rem;
+  bottom: 17.25rem;
+}
+.community_header_image {
+  width: 100%;
+  height: 21rem;
+  display: flex;
+  position: relative;
+  top: -3.75rem;
+}
+
+.header_img {
+  display: block;
+  flex-direction: column;
+  width: 100%;
+  height: 14rem;
+  background-repeat: no-repeat;
+  place-items: center;
+}
+
+.community_cards {
+  margin-top: 5rem;
+  height: 70rem;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.btn_add_post {
+  position: fixed;
+  bottom: 4rem;
+  right: 2rem;
+  cursor: pointer;
+}
