@@ -16,7 +16,8 @@ const getPostById = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     if (!post) {
-      res.status(204).send("can not find by this id");
+      res.status(204).send("Cannot find post with this id");
+      return;
     }
     res.send(post);
   } catch (e) {
@@ -25,44 +26,67 @@ const getPostById = async (req, res) => {
   }
 };
 
+// delete post
 const deletePost = async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
-    if (!post) {
-      res.status(204).send("can not find by this id");
+    const result = await Post.deleteOne({ _id: req.params.id });
+    if (!result.deletedCount) {
+      res.status(204).send("No post found with this id");
+    } else {
+      res.status(200).send("Post deleted successfully");
     }
-    await post.deleteOne();
-    res.status(200).send("Post deleted successfully.");
   } catch (e) {
     console.log(e);
     res.status(500).send({ message: e.message });
   }
 };
 
-const updateTripById = async (req, res) => {
-  const post = await Post.findById(req.params.id);
-  if (!post) {
-    res.status(204).send("can not find by this id");
-  }
-
-  const { comments, likes } = req.body;
-
-  if (comments !== undefined) {
-    post.comments = comments;
-  }
-
-  if (likes !== undefined) {
-    post.likes = likes;
-  }
-
+// update post by id
+const updatePostById = async (req, res) => {
   try {
+    const post = await Post.findById(req.params.id);
+    if (!post) {
+      res.status(204).send("Cannot find post with this id");
+      return;
+    }
+
+    const { title, location, author, likes, comments, date, photo } = req.body;
+
+    if (title) {
+      post.title = title;
+    }
+
+    if (location) {
+      post.location = location;
+    }
+
+    if (author) {
+      post.author = author;
+    }
+
+    if (likes) {
+      post.likes = likes;
+    }
+
+    if (comments) {
+      post.comments = comments;
+    }
+
+    if (date) {
+      post.date = date;
+    }
+
+    if (photo) {
+      post.photo = photo;
+    }
+
     const updatedPost = await post.save();
     res.json(updatedPost);
   } catch (e) {
-    res.status(400).send({ message: e.message });
+    console.log(e);
+    res.status(500).send({ message: e.message });
   }
 };
-
 
 // create post
 const createPost = async (req, res) => {
@@ -90,5 +114,5 @@ module.exports = {
   getPostById,
   createPost,
   deletePost,
-  updateTripById,
+  updatePostById,
 };
