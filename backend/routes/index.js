@@ -1,5 +1,5 @@
-const TripsRouter = require('./TripsRoute')
+const TripsRouter = require('./TripsRoute');
 
 module.exports = {
-    TripsRouter
+    TripsRouter,
 };

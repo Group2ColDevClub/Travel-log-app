@@ -1,9 +1,11 @@
-const express = require('express'); 
+const express = require('express');
+const cors = require('cors');
 const mongoConnect = require('./config/mongoConnect.js')
 const routes = require('./routes');
 
 const app = express();
 
+app.use(cors());
 app.use(express.json())
 
 app.use('/trips' , routes.TripsRouter)
