@@ -1,0 +1,22 @@
+.community_footer {
+  display: flex;
+  position: relative;
+  width: 60%;
+  justify-content: space-between;
+  left: 2.8rem;
+}
+.community-icon {
+  font-size: 1.6rem;
+}
+
+.like_counter {
+  color: var(--black);
+  position: relative;
+  left: 1.875rem;
+}
+
+.comments_counter {
+  color: var(--black);
+  position: relative;
+  right: 6.7rem;
+}
