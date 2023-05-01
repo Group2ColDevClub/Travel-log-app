@@ -2,7 +2,7 @@
 node_modules
 jspm_packages
 route.rest
-package-lock.json
+# package-lock.json
 
 # dotenv environment variable files
 .env
@@ -10,3 +10,6 @@ package-lock.json
 .env.test.local
 .env.production.local
 .env.local
+
+# rest client 
+.rest

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import { useLocation, useNavigate } from 'react-router-dom';
+
 import styles from './planTrip.module.css';
 import Title from '../../components/ui/Title/Title';
 import Form from '../../components/ui/Form/Form.tsx';

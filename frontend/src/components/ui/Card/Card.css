@@ -1,6 +1,3 @@
-* {
-  border-radius: 0.4rem;
-}
 h3 {
   margin: 0.6rem;
 }
@@ -11,16 +8,19 @@ h3 {
   width: 26.75rem;
   left: 1.75rem;
   overflow: hidden;
-  filter: drop-shadow(0px 4px 19px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0rem 0.25rem 1.2rem rgba(0, 0, 0, 0.25));
+  border-radius: 0.4rem;
 }
 .card--s-wide {
   width: 34.75rem;
   height: 10.625rem;
+  border-radius: 0.4rem;
 }
-.card--s-wide img {
+.card--s-wide .card-post-image {
   overflow: hidden;
   height: 5.5rem;
   width: 100%;
+  border-radius: 0.4rem;
 }
 .card--s-wide .card-title {
   top: -6rem;
@@ -35,13 +35,14 @@ h3 {
 .card--m-long {
   width: 26.75rem;
   height: 19.25rem;
+  border-radius: 0.4rem;
 }
 
 .card-title {
   position: relative;
   display: flex;
   background: var(--black);
-  opacity: 35%;
+  opacity: 55%;
   width: 100%;
   height: 3rem;
   top: -13.4rem;
@@ -49,10 +50,11 @@ h3 {
   text-align: start;
 }
 
-img {
+.card-post-image {
   overflow: hidden;
   height: 12.9rem;
   width: 100%;
+  border-radius: 0.4rem;
 }
 
 .card-content {
@@ -70,4 +72,21 @@ img {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+#card-header-description {
+  color: var(--black);
+}
+
+#card-post-description {
+  overflow-wrap: break-word;
+  width: 100%;
+  color: var(--grey);
+  height: 10rem;
+  font-size: 0.8rem;
+}
+
+#card-footer {
+  display: flex;
+  flex-direction: row-reverse;
 }
