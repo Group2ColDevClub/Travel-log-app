@@ -3,7 +3,6 @@ const app = express();
 const cors = require('cors');
 const mongoConnect = require('./config/mongoConnect.js')
 const routes = require('./routes');
-const mongoConnect = require('./config/mongoConnect');
 require('dotenv').config();
 
 const PORT = process.env.SERVER_PORT;
