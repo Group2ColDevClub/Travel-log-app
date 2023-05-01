@@ -5,6 +5,13 @@ class NoToken extends Error {
         this.status = 401;
     }
 }
+class NoRefreshToken extends Error {
+    constructor() {
+        super('No Refresh token');
+        this.name = 'NoRefreshToken';
+        this.status = 401;
+    }
+}
 class InvalidRefreshToken extends Error {
     constructor() {
         super('Invalid refresh token');
@@ -60,6 +67,7 @@ class FailedToCreateADocument extends Error {
 
 module.exports = {
     NoToken,
+    NoRefreshToken,
     InvalidRefreshToken,
     InvalidToken,
     MissingParameters,

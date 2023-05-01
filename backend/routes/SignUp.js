@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Errors = require('../utils/errors');
 const UsersModel = require('../models/UsersModel');
+const { createToken, createRefreshToken } = require('../utils/token');
 
 router.post('/', async (req, res, next) => {
     try {
@@ -20,7 +21,15 @@ router.post('/', async (req, res, next) => {
         });
         const savedUser = await newUser.save();
         if (!savedUser) throw new Errors.FailedToCreateADocument();
-        res.status(201).json({ msg: "success" });
+        const userData = {
+            _id: savedUser._id,
+            username: savedUser.username
+        }
+        const token = createToken(userData);
+        if (!token) throw Errors.NoToken();
+        const refreshToken = createRefreshToken(userData);
+        if (!refreshToken) throw Errors.NoRefreshToken();
+        res.status(201).json({ msg: "success", token: token, refreshToken: refreshToken });
     } catch (err) {
         if (err.message.includes("duplicate key error collection")) {
             res.status(409).json({ msg: "username already exists" });

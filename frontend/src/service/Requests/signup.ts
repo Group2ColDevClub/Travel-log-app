@@ -11,8 +11,10 @@ export const signup = async (data: { [key: string]: any }) => {
       },
     };
     const res = await fetch(url, requestInit);
-    const { msg } = await res.json();
+    const { msg, token, refreshToken } = await res.json();
     if (res.status !== 201) throw new Error(`Creation failed: ${msg}`);
+    localStorage.setItem('token', token);
+    localStorage.setItem('refreshToken', refreshToken);
     return true;
   } catch (err) {
     toast.error(err.message);

@@ -58,10 +58,7 @@ export default function SignUp() {
   const handleSubmit = async (data: { [key: string]: any }) => {
     const signedUp = await Requests.signup(data);
     if (signedUp) {
-      const res = await Requests.login({ username: data.username, password: data.password });
-      if (res?.status === 200) {
-        navigate('/plan_a_trip');
-      }
+      navigate('/plan_a_trip');
     }
   };
 
