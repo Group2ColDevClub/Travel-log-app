@@ -5,8 +5,7 @@ const UsersModel = require('../models/UsersModel');
 
 router.post('/', async (req, res, next) => {
     try {
-        const { firstName, lastName, username, password, email, ...rest } = req.body;
-        console.log(rest);
+        const { firstName, lastName, username, password, email } = req.body;
         if (!username) throw new Errors.MissingParameters("username");
         if (!password) throw new Errors.MissingParameters("password");
         if (!email) throw new Errors.MissingParameters("email");
