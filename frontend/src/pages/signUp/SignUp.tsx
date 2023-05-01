@@ -31,7 +31,7 @@ export default function SignUp() {
     },
     {
       label: 'User name',
-      name: 'userName',
+      name: 'username',
       placeholder: 'User name',
       errorMsg: 'User name is not valid',
       validationFunc: usernameValidation,

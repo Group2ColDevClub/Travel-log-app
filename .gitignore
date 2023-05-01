@@ -1,6 +1,8 @@
 # Dependency directories
 node_modules
 jspm_packages
+route.rest
+# package-lock.json
 
 # dotenv environment variable files
 .env
