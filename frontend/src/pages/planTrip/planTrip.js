@@ -85,7 +85,7 @@ export default function PlanTripPage() {
     <div>
       <div className={styles.background}>
         <div className={styles.bg_image}>
-          <Title variant='h2' title='Plan a Trip' />
+          <Title className={styles.title} variant='h2' title='Plan a Trip' />
           <header>
             <div className={styles.searchTrip}>
               <Form

@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { FormInputModel } from '../../models/index.js';
 import styles from './SignUp.module.css';
 import Form from '../../components/ui/Form/Form.tsx';
+import * as Requests from '../../service/Requests';
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -54,10 +55,14 @@ export default function SignUp() {
     },
   ];
 
-  const handleSubmit = (data: { [key: string]: any }) => {
-    // TODO: handle submit on next issue!
-    // eslint-disable-next-line no-console
-    console.log(data);
+  const handleSubmit = async (data: { [key: string]: any }) => {
+    const signedUp = await Requests.signup(data);
+    if (signedUp) {
+      const res = await Requests.login({ username: data.username, password: data.password });
+      if (res?.status === 200) {
+        navigate('/plan_a_trip');
+      }
+    }
   };
 
   const goToSignUpPage = () => {

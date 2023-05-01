@@ -23,7 +23,7 @@ class MissingParameters extends Error {
     constructor(msg) {
         super('missing: ' + msg);
         this.name = 'MissingParameters';
-        this.status = 401;
+        this.status = 400;
     }
 }
 class UserNotFound extends Error {
@@ -50,6 +50,13 @@ class JWTExpired extends Error {
     }
 }
 
+class FailedToCreateADocument extends Error {
+    constructor() {
+        super('Failed to create a document');
+        this.name = 'FailedToCreateADocument';
+        this.status = 403;
+    }
+}
 
 module.exports = {
     NoToken,
@@ -58,5 +65,6 @@ module.exports = {
     MissingParameters,
     UserNotFound,
     InvalidPassword, 
-    JWTExpired
+    JWTExpired,
+    FailedToCreateADocument
 }
