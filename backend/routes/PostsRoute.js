@@ -5,10 +5,10 @@ const {
   getPostById,
   createPost,
   deletePost,
-  updateTripById,
+  updatePostById,
 } = require("../controllers/PostController");
 
-// get all post
+// get all posts
 router.get("/", getAllPosts);
 
 // get specific post
@@ -21,6 +21,6 @@ router.post("/", createPost);
 router.delete("/:id", deletePost);
 
 // update post
-router.put("/:id", updateTripById);
+router.put("/:id", updatePostById);
 
 module.exports = router;
