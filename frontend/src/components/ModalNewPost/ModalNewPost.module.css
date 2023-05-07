@@ -1,0 +1,48 @@
+.modal_title {
+  position: relative;
+  top: 6.3rem;
+  left: 3.75rem;
+}
+
+.modal_photo {
+  display: flex;
+  position: relative;
+  left: 3.75rem;
+  top: 6.5rem;
+  width: 31.625rem;
+  height: 22.9rem;
+  background-color: var(--black);
+}
+
+.modal_right {
+  position: relative;
+  left: 32.5rem;
+  bottom: 21.25rem;
+}
+.description {
+  position: relative;
+  width: 25rem;
+}
+.title {
+  position: relative;
+  left: -.625rem;
+  width: 25rem;
+}
+.location {
+  position: relative;
+  left: -.625rem;
+}
+.modal_textareas {
+  position: relative;
+  display: grid;
+  top: 5.625rem;
+  left: 9.5625rem;
+  align-items: end;
+}
+
+.footer {
+  position: relative;
+  display: inline-block;
+  bottom: 14.9375rem;
+  left: 29.375rem;
+}
