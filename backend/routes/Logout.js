@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Errors = require('../utils/errors');
-let { refreshTokens } = require('../utils/tokens');
+let { refreshTokens } = require('../utils/token');
 
 router.post('/', (req, res, next) => {
     try {
