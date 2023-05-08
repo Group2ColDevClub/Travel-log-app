@@ -1,83 +1,82 @@
-
 .searchTrip {
-display: flex;
-justify-content: space-around;
-position: relative;
-margin-bottom: 2rem;
-} 
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  margin-bottom: 2rem;
+}
 
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h2 {
-    padding-top: 5rem;
-    padding-bottom: 2rem;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .bg_image {
-    background-Image: url('../../assets/tripImage.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 60%;
-    width: 100%;
-    position: fixed;
-    background-position: center center;
-    position: relative;
+  background-image: url('../../assets/tripImage.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 60%;
+  width: 100%;
+  position: fixed;
+  background-position: center center;
+  position: relative;
 }
 
 .title_search {
-    display: flex;
+  display: flex;
 }
 
-.divSearchTrip{
-    padding-left:1rem;
+.divSearchTrip {
+  padding-left: 1rem;
 }
 
 .restOfThePage {
-    background-color: var(--white);
-    height: 72.5vh;
-    width: 100%;
-    position: absolute;
-    object-fit: cover;
+  background-color: var(--white);
+  height: 72.5vh;
+  width: 100%;
+  position: absolute;
+  object-fit: cover;
 }
 
 label {
-    text-align: left;
-    font-size: small;
-    margin:0rem 0.2rem;
+  text-align: left;
+  font-size: small;
+  margin: 0rem 0.5rem;
 }
 
 .form {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .form_item {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-  }
+  display: flex;
+  flex-direction: row;
+}
 
-  .input_wrapper {
-    display: flex;
-    flex-direction: column;
-  }
+.form_item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
 
-  .label_wrapper {
-    display: flex;
-    margin: 0rem 1rem;
-  }
+.input_wrapper {
+  display: flex;
+  flex-direction: column;
+}
 
-  .button_wrapper {
-    margin-top: 1rem;
-  }
+.label_wrapper {
+  display: flex;
+  margin: 0rem 1rem;
+}
 
-  .card_container {
-    color: var(--black) ;
-  }
+.button_wrapper {
+  margin-top: 1rem;
+}
+
+.card_container {
+  color: var(--black);
+}
