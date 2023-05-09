@@ -1,3 +1,12 @@
+
+
+const PostsRouter = require("./PostsRoute");
+
+module.exports = {
+  TripsRouter,
+  PostsRouter,
+};
+
 const login = require('./Login');
 const authentication = require('./Authenticate');
 const TripsRouter = require('./TripsRoute');
@@ -11,3 +20,4 @@ module.exports = {
     TripsRouter,
     signup
 };
+
