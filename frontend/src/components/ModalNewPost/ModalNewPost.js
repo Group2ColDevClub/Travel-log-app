@@ -7,7 +7,7 @@ function ModalNewPost({ title, footer }) {
   return (
     <div className={`${styles.post_container}`}>
       <div className={`${styles.modal_title}`}>
-        <h1> {title} </h1>
+        <h1>{title}</h1>
       </div>
       <div className={`${styles.modal_left}`}>
         <div className={`${styles.modal_photo}`}>
