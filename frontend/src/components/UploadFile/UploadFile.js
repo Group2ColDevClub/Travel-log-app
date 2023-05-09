@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
+import Text from '../ui/Text/Text';
 import styles from './UploadFile.module.css';
 
 function UploadFile() {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [imagePreview, setimagePreview] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const handleImageChange = (event) => {
@@ -13,7 +14,7 @@ function UploadFile() {
 
     const reader = new FileReader();
     reader.onloadend = () => {
-      setimagePreview(reader.result);
+      setImagePreview(reader.result);
       setIsImageLoaded(true);
     };
     reader.readAsDataURL(file);
@@ -25,7 +26,7 @@ function UploadFile() {
 
   const removeSelectedImage = () => {
     setSelectedImage(null);
-    setimagePreview(null);
+    setImagePreview(null);
     setIsImageLoaded(false);
   };
 
@@ -35,7 +36,7 @@ function UploadFile() {
         {!isImageLoaded && (
           // eslint-disable-next-line jsx-a11y/label-has-associated-control
           <label htmlFor='imageInput' className={`${styles.file_input_label}`}>
-            <h3>Click to choose an image</h3>
+            <Text content='Click to choose an image' type='bold' />
           </label>
         )}
         <input type='file' id='imageInput' onChange={handleImageChange} accept='image/*' style={{ display: 'none' }} />
