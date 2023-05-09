@@ -81,3 +81,7 @@ label {
   .card_container {
     color: var(--black) ;
   }
+
+  .title{
+    color: var(--white);
+  }

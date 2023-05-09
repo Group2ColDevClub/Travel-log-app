@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { FormInputModel } from '../../models';
+import * as Requests from '../../service/Requests';
 import Form from '../../components/ui/Form/Form.tsx';
 import styles from './SignIn.module.css';
 
@@ -12,7 +13,7 @@ export default function SignInPage() {
   const signInInputs: Array<FormInputModel> = [
     {
       label: 'User name',
-      name: 'userName',
+      name: 'username',
       placeholder: 'User name',
       errorMsg: 'User name is not valid',
       validationFunc: usernameValidation,
@@ -27,10 +28,11 @@ export default function SignInPage() {
     },
   ];
 
-  const handleSubmit = (data: { [key: string]: any }) => {
-    // TODO: handle submit on next issue!
-    // eslint-disable-next-line no-console
-    console.log(data);
+  const handleSubmit = async (data: { [key: string]: any }) => {
+    const res = await Requests.login(data);
+    if (res?.status === 200) {
+      navigate('/plan_a_trip');
+    }
   };
 
   const goToSignUpPage = () => {
