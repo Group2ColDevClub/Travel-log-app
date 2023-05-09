@@ -1,6 +1,7 @@
 import styles from './ModalNewPost.module.css';
 import Input from '../ui/Input/input';
 import Textarea from '../ui/Textarea/Textarea';
+import Text from '../ui/Text/Text';
 import UploadFile from '../UploadFile/UploadFile';
 
 function ModalNewPost({ title, footer }) {
@@ -16,11 +17,11 @@ function ModalNewPost({ title, footer }) {
       </div>
       <div className={`${styles.modal_right}`}>
         <div className={`${styles.modal_textareas}`}>
-          <h4> Title </h4>
+          <Text content='Title' type='bold' />
           <Input className={`${styles.title}`} size='l' />
-          <h4> Location </h4>
+          <Text content='Location' type='bold' />
           <Input className={`${styles.location}`} size='l' />
-          <h4> Description </h4>
+          <Text content='Description' type='bold' />
           <Textarea className={`${styles.description}`} size='l' />
         </div>
       </div>
