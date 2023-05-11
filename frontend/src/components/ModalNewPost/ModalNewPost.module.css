@@ -2,12 +2,6 @@
   height: 80%;
 }
 
-.modal_title {
-  position: relative;
-  top: 6.3rem;
-  left: 3.75rem;
-}
-
 .modal_photo {
   display: flex;
   position: relative;

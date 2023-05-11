@@ -4,12 +4,9 @@ import Textarea from '../ui/Textarea/Textarea';
 import Text from '../ui/Text/Text';
 import UploadFile from '../UploadFile/UploadFile';
 
-function ModalNewPost({ title }) {
+function ModalNewPost() {
   return (
     <div className={`${styles.post_container}`}>
-      <div className={`${styles.modal_title}`}>
-        <h1>{title}</h1>
-      </div>
       <div className={`${styles.modal_left}`}>
         <div className={`${styles.modal_photo}`}>
           <UploadFile />

@@ -3,11 +3,6 @@ h2 {
   display: flex;
   justify-content: unset;
 }
-.comment_title {
-  position: relative;
-  padding-left: 3.75rem;
-  top: 5rem;
-}
 
 .comment_subTitle {
   position: fixed;
