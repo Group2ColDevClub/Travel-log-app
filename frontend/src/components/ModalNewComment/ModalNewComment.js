@@ -1,7 +1,6 @@
 import styles from './ModalNewComment.module.css';
 import Input from '../ui/Input/input';
 import Text from '../ui/Text/Text';
-import Button from '../ui/Button/Button';
 
 function ModalNewComment({ title, post }) {
   return (
@@ -20,7 +19,6 @@ function ModalNewComment({ title, post }) {
           </ul>
         </div>
         <Input size='l' />
-        <Button className={styles.send_button} size='m' variant='primary' type='submit' label='Send' />
       </div>
     </div>
   );
