@@ -4,7 +4,7 @@ import Textarea from '../ui/Textarea/Textarea';
 import Text from '../ui/Text/Text';
 import UploadFile from '../UploadFile/UploadFile';
 
-function ModalNewPost({ title, footer }) {
+function ModalNewPost({ title }) {
   return (
     <div className={`${styles.post_container}`}>
       <div className={`${styles.modal_title}`}>
@@ -25,7 +25,6 @@ function ModalNewPost({ title, footer }) {
           <Textarea className={`${styles.description}`} size='l' />
         </div>
       </div>
-      <div className={`${styles.footer}`}>{footer}</div>
     </div>
   );
 }
