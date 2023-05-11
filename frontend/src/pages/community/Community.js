@@ -7,6 +7,7 @@ import travelersPosts from '../../data/travelersPosts';
 import Modal from '../../components/ui/Modal/Modal';
 import Button from '../../components/ui/Button/Button';
 import styles from './Community.module.css';
+import ModalNewPost from '../../components/ModalNewPost/ModalNewPost';
 
 export default function CommunityPage() {
   const [showPostModal, setShowPostModal] = useState(false);
@@ -35,11 +36,13 @@ export default function CommunityPage() {
           title='Upload Post'
           isPostModal
           footer={<Button size='l' variant='primary' type='submit' label='Upload' />}
-        />
+        >
+          <ModalNewPost />
+        </Modal>
       )}
       {showCommentModal && (
-        <Modal onClose={handleCommentClose} title='Comments' post={selectedPost}>
-          <ModalNewComment />
+        <Modal onClose={handleCommentClose} title='Comments' footer={<Button size='m' variant='primary' type='submit' label='Send' />}>
+          <ModalNewComment post={selectedPost} />
         </Modal>
       )}
       <div className={styles.header_img}>
