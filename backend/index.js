@@ -25,7 +25,6 @@ app.post('/create', async (req, res, next) => {
       email: reqBody.email,
     });
     const savedUser = await newUser.save();
-    console.log(savedUser);
     res.status(200).json(savedUser)
   } catch (err) {
     console.log(err.message);

@@ -1,6 +1,6 @@
 const login = require('./Login');
 const authentication = require('./Authenticate');
-const TripsRouter = require('./TripsRoute')
+const TripsRouter = require('./tripsRoute')
 const logout = require('./Logout')
 
 module.exports = {

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getAllTrips, getTripById, createTrip, updateTripById } = require('../controllers/TripsController');
+const { getAllTrips, getTripById, createTrip, updateTripById } = require('../controllers/tripsController');
 const getTripsSearch = require('../midlewares/getTripSearch.js');
 
 router.get('/', getAllTrips);
