@@ -105,17 +105,17 @@
       grid-template-columns: auto auto auto;
     }
 
-    @media (min-width: 768px) { /* Apply styles for screens wider than 768px */
+    @media (min-width: 768px) { 
       .form {
         flex-direction: row;
       }
     
       .input_wrapper {
-        width: 25%; /* Set input width to 25% on wider screens */
+        width: 25%; 
       }
     }
 
-    @media (max-width: 767px) { /* Apply styles for screens up to 767px wide */
+    @media (max-width: 767px) { 
       .searchTrip {
         flex-direction: column;
         align-items: center;
@@ -137,7 +137,7 @@
       }
     
       .input_wrapper {
-        width: 100%; /* Set input width to 100% on narrower screens */
+        width: 100%;
         margin-bottom: 1rem;
       }
     
