@@ -34,7 +34,6 @@ function UploadFile() {
     <form onSubmit={handleSubmit}>
       <div className={`${styles.file_input_container}`}>
         {!isImageLoaded && (
-          // eslint-disable-next-line jsx-a11y/label-has-associated-control
           <label htmlFor='imageInput' className={`${styles.file_input_label}`}>
             <Text content='Click to choose an image' type='bold' />
           </label>

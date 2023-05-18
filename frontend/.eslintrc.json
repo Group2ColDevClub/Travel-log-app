@@ -36,7 +36,8 @@
       {
         "js": "ignorePackages"
       }
-    ]
+    ],
+    "jsx-a11y/label-has-associated-control": ["error", { "assert": "either" }]
   },
   "parserOptions": {
     "ecmaFeatures": {
@@ -45,5 +46,4 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   }
-  
 }
