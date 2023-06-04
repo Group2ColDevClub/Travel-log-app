@@ -1,8 +1,7 @@
 const cors = require('./Cors');
-const { verifyToken, getToken } = require('../utils/VerifyToken');
+const getTripSearch = require('./getTripSearch')
 
 module.exports = {
-    cors, 
-    verifyToken, 
-    getToken
+    cors,
+    getTripSearch
 }

@@ -52,7 +52,6 @@ const createTrip = async (req, res, next) => {
     if (existingTrip) res.json(existingTrip);
     else{
       const searchedTrip = await searchNewTrip(req, res, next);
-      console.log(searchedTrip);  
     }
   }catch(e){
     console.log({msg : e.message});

@@ -48,7 +48,6 @@
   .restOfThePage {
       background-color: var(--white);
       min-height: calc(100vh - 100%);
-      /* width: 100%; */
       position: absolute;
       object-fit: cover;
       z-index: 0;
@@ -99,10 +98,13 @@
       margin-top: 5rem;
       height: 70rem;
       display: grid;
-      justify-content: flex-start;
+      /* justify-content: flex-start; */
       padding-left: 10%;
       gap: 2.5rem;
       grid-template-columns: auto auto auto;
+    }
+    .error{
+      justify-content: center;
     }
 
     @media (min-width: 768px) { 

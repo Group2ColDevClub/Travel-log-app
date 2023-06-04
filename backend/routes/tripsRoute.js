@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const { getAllTrips, getTripById, createTrip, updateTripById } = require('../controllers/tripsController');
-const getTripsSearch = require('../midlewares/getTripSearch.js');
+const { getTripSearch } = require('../middlewares/index.js');
 
 router.get('/', getAllTrips);
 
-router.get("/:id", getTripsSearch, getTripById);
+router.get("/:id", getTripSearch, getTripById);
 
 router.post('/', createTrip);
 
-router.put("/:id", getTripsSearch, updateTripById);
+router.put("/:id", getTripSearch, updateTripById);
 
 module.exports = router;

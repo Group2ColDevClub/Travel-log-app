@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useState } from 'react';
 import axios from 'axios';
-import TripDescriptionHeader from '../../components/TripCard/DescriptionHeader/TripDescriptionHeader.js';
+import { TripDescriptionHeader } from '../../components/index.js';
+// import TripDescriptionHeader from '../../components/TripCard/DescriptionHeader/TripDescriptionHeader.js';
 import styles from './planTrip.module.css';
 import Title from '../../components/ui/Title/Title';
 import Form from '../../components/ui/Form/Form.tsx';
 import Card from '../../components/ui/Card/Card.js';
-import Logo from '../../assets/signInPageImg.png';
-import { useAuth } from '../../hooks/useAuth.tsx';
-import { IMAGE_URL } from '../../data/constants.js';
+import { IMAGE_URL, LOCAL_URL } from '../../data/constants.js';
 
 export default function PlanTripPage() {
   const [showCard, setShowCard] = useState(false);
@@ -33,7 +31,7 @@ export default function PlanTripPage() {
         location,
         numberOfTravelers: Number(numberOfTravelers),
       };
-      const { data: tripsRes } = await axios.post('http://localhost:8080/trips', reqBody);
+      const { data: tripsRes } = await axios.post(LOCAL_URL, reqBody);
       setSearchResults(tripsRes);
       setShowCard(true);
     } catch (error) {
