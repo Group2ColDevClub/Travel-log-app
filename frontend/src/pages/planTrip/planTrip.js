@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { TripDescriptionHeader } from '../../components/index.js';
-// import TripDescriptionHeader from '../../components/TripCard/DescriptionHeader/TripDescriptionHeader.js';
 import styles from './planTrip.module.css';
 import Title from '../../components/ui/Title/Title';
 import Form from '../../components/ui/Form/Form.tsx';
