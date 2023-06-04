@@ -11,7 +11,6 @@ module.exports = {
     logout,
     authentication,
     TripsRouter,
-    PostsRouter,
-    signup
+    PostsRouter
 };
 
