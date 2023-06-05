@@ -1,5 +1,3 @@
-
-
 const PostsRouter = require("./PostsRoute");
 const login = require('./Login');
 const authentication = require('./Authenticate');
@@ -9,6 +7,7 @@ const signup = require('./SignUp')
 module.exports = {
     login,
     logout,
+    signup,
     authentication,
     TripsRouter,
     PostsRouter
