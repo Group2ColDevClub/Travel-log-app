@@ -55,6 +55,7 @@ const createTrip = async (req, res, next) => {
     }
   }catch(e){
     console.log({msg : e.message});
+    res.json(500)
   }
 };
 
