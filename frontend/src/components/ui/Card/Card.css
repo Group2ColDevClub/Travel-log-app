@@ -48,6 +48,7 @@ h3 {
   top: -13.4rem;
   font-size: large;
   text-align: start;
+  color: var(--white)
 }
 
 .card-post-image {

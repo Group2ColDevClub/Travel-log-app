@@ -1,31 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import Card from 'react-bootstrap/Card';
-import { useLocation, useNavigate } from 'react-router-dom';
-
+import { useState } from 'react';
+import axios from 'axios';
+import { TripDescriptionHeader } from '../../components/index.js';
 import styles from './planTrip.module.css';
 import Title from '../../components/ui/Title/Title';
 import Form from '../../components/ui/Form/Form.tsx';
-import Logo from '../../assets/signInPageImg.png';
-import { useAuth } from '../../hooks/useAuth.tsx';
+import Card from '../../components/ui/Card/Card.js';
+import { IMAGE_URL, LOCAL_URL } from '../../data/constants.js';
 
 export default function PlanTripPage() {
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
   const [showCard, setShowCard] = useState(false);
-
-  const handleSubmit = (data, e) => {
+  const [dateParams, setDatesParams] = useState({
+    startDate: '',
+    endDate: '',
+  });
+  const [searchResults, setSearchResults] = useState([]);
+  const handleSearchParamsChange = (name, value) => {
+    setDatesParams((prevSearchParams) => ({
+      ...prevSearchParams,
+      [name]: value,
+    }));
+  };
+  const handleSubmit = async (data, e) => {
     e.preventDefault();
-    setShowCard(true);
+    try {
+      const { startDate, endDate, location, numOfTravelers: numberOfTravelers } = data;
+      const reqBody = {
+        startDate,
+        endDate,
+        location,
+        numberOfTravelers: Number(numberOfTravelers),
+      };
+      const { data: tripsRes } = await axios.post(LOCAL_URL, reqBody);
+      setSearchResults(tripsRes);
+      setShowCard(true);
+    } catch (error) {
+      console.log({ msg: error });
+    }
   };
-
-  const handleStartDateChange = (value) => {
-    setStartDate(value);
-  };
-
-  const handleEndDateChange = (value) => {
-    setEndDate(value);
-  };
-
   const inputsArray = [
     {
       label: 'Location',
@@ -40,9 +51,9 @@ export default function PlanTripPage() {
     {
       label: 'Start Date',
       name: 'startDate',
-      onChange: handleStartDateChange,
-      value: startDate,
-      max: endDate,
+      onChange: (value) => handleSearchParamsChange('startDate', value),
+      value: dateParams.startDate,
+      max: dateParams.endDate,
       type: 'date',
       className: styles.form_item,
       labelClassName: styles.label_wrapper,
@@ -56,24 +67,22 @@ export default function PlanTripPage() {
     {
       label: 'End Date',
       name: 'endDate',
-      onChange: handleEndDateChange,
-      value: endDate,
-      min: startDate,
+      onChange: (value) => handleSearchParamsChange('endDate', value),
+      value: dateParams.endDate,
+      min: dateParams.startDate,
       type: 'date',
       className: styles.form_item,
       labelClassName: styles.label_wrapper,
-      validationFunc: (value) => {
-        const endDate = new Date(value);
-        const today = new Date();
-        return endDate > today && endDate.getFullYear() < 2100;
+      validationFunc: () => {
+        return dateParams.endDate > dateParams.startDate;
       },
       errorMsg: 'End date must be in the future and after start date',
     },
     {
       label: 'Number of Travelers',
-      name: 'numOfTravelets',
-      placeholder: 'Enter number of travelets',
-      type: 'text',
+      name: 'numOfTravelers',
+      placeholder: 'Enter number of travelers',
+      type: 'number',
       className: styles.form_item,
       labelClassName: styles.label_wrapper,
       validationFunc: (value) => parseInt(value, 10) > 0,
@@ -81,8 +90,18 @@ export default function PlanTripPage() {
     },
   ];
 
+  function padZero(number) {
+    return number.toString().padStart(2, '0');
+  }
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    const formattedDate = `${padZero(date.getDate())}/${padZero(date.getMonth() + 1)}/${date.getFullYear()}`;
+    const formattedTime = `${padZero(date.getHours())}:${padZero(date.getMinutes())}`;
+    return `${formattedDate} ${formattedTime}`;
+  }
+
   return (
-    <div>
+    <div className={styles.page}>
       <div className={styles.background}>
         <div className={styles.bg_image}>
           <Title className={styles.title} variant='h2' title='Plan a Trip' />
@@ -97,7 +116,33 @@ export default function PlanTripPage() {
               />
             </div>
           </header>
-          <div className={styles.restOfThePage} />
+          <div className={styles.restOfThePage}>
+            <div className={styles.trip_Cards}>
+              {searchResults && searchResults?.flights?.length === 0 && showCard && (
+                <div>Temporary there are no results, please try again later</div>
+              )}
+              {searchResults &&
+                searchResults.flights &&
+                searchResults?.flights?.map((flight) => {
+                  return (
+                    <Card
+                      key={flight.flightID}
+                      title={searchResults?.destination}
+                      DescriptionHeader={
+                        <TripDescriptionHeader
+                          price={`$${flight.flightPrice}`}
+                          startDate={formatDate(flight.flightStartDate)}
+                          endDate={formatDate(flight.flightEndDate)}
+                          deepLink={flight.deepLink}
+                        />
+                      }
+                      image={IMAGE_URL}
+                      size='m'
+                    />
+                  );
+                })}
+            </div>
+          </div>
         </div>
       </div>
     </div>

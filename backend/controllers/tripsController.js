@@ -8,7 +8,6 @@ const getAllTrips = async (req, res) => {
     const tripSearches = await TripsSearch.find();
     res.json(tripSearches);
   } catch (e) {
-    console.log(e);
     res.status(500).send({ msg: e.message });
   }
 };
@@ -21,7 +20,6 @@ const getTripById = async (req, res) => {
     }
     res.send(tripSearches);
   } catch (e) {
-    console.log(e);
     res.status(500).send({ msg: e.message });
   }
 };
@@ -40,16 +38,25 @@ const updateTripById = async (req, res, next) => {
 
 const createTrip = async (req, res, next) => {
   const { numberOfTravelers, destination, startDate, endDate } = req.body;
-  const existingTrip = await TripsSearch.findOne({
-    destination: destination,
-    startDate: startDate,
-    endDate: endDate,
-    numberOfTravelers: numberOfTravelers,
-  });
-
-  if (existingTrip) res.json(existingTrip);
-
-  const searchedTrip = await searchNewTrip(req, res, next);
+  try{
+    const existingTrip = await TripsSearch.findOne({
+      destination: destination,
+      'flights': {
+        $elemMatch: {
+          flightStartDate: { $gte: new Date(startDate) },
+          flightEndDate: { $lte: new Date(endDate) }
+        }
+      },
+      numberOfTravelers: numberOfTravelers,
+    });
+    if (existingTrip) res.json(existingTrip);
+    else{
+      const searchedTrip = await searchNewTrip(req, res, next);
+    }
+  }catch(e){
+    console.log({msg : e.message});
+    res.json(500)
+  }
 };
 
 const searchNewTrip = async (req, res, next) => {
