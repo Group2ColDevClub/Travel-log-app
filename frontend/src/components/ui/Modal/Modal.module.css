@@ -1,0 +1,57 @@
+.modal_background {
+  position: fixed;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.modal_container {
+  position: relative;
+  left: 8.125rem;
+  top: 3.75rem;
+  width: 74rem;
+  height: 45rem;
+  background: rgba(0, 0, 0, 0.49);
+  border: .0625rem solid rgba(255, 255, 255, 0.1);
+  border-radius: .125rem;
+}
+
+.close_icon {
+  position: fixed;
+  right: 7.9375rem;
+  fill: var(--white);
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+}
+
+.post_title {
+  position: relative;
+  top: 6.3rem;
+  left: 3.75rem;
+}
+
+.comment_title {
+  position: relative;
+  padding-left: 3.75rem;
+  top: 5rem;
+}
+
+.post_footer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top: -3rem;
+}
+
+.comment_footer {
+  position: relative;
+  padding-right: 5.625rem;
+  padding-top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  top: -6rem;
+}

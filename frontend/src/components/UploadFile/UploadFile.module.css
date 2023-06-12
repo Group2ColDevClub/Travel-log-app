@@ -1,0 +1,25 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 23rem;
+  width: 36.87rem;
+}
+
+.image_upload {
+  position: relative;
+  top: .93rem;
+  width: 31.87rem;
+  height: 23rem;
+}
+
+.trash_button {
+  position: relative;
+  top: .625rem;
+  cursor: pointer;
+}
+
+.file_input_label {
+  cursor: pointer;
+}

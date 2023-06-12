@@ -3,8 +3,7 @@ import { AiFillLike } from 'react-icons/ai';
 import { MdAddComment } from 'react-icons/md';
 import styles from './PostFooter.module.css';
 
-function PostFooter({ postId, likes, comments }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+function PostFooter({ postId, post, likes, comments, handleCommentOpen }) {
   const [isLiked, setIsLiked] = useState([]);
 
   const handleLikeClick = (postId) => {
@@ -14,8 +13,8 @@ function PostFooter({ postId, likes, comments }) {
       setIsLiked([...isLiked, postId]);
     }
   };
-  const handleCommentClick = () => {
-    setIsModalOpen(true);
+  const handleCommentClick = (post) => {
+    handleCommentOpen(post);
   };
 
   const isPostLiked = isLiked.includes(postId);
@@ -26,7 +25,7 @@ function PostFooter({ postId, likes, comments }) {
       <button onClick={() => handleLikeClick(postId)}>
         <AiFillLike className={`${styles['community-icon']}`} fill={isPostLiked ? 'red' : ''} />
       </button>
-      <button onClick={handleCommentClick}>
+      <button onClick={() => handleCommentClick(post)}>
         <MdAddComment className={`${styles['community-icon']}`} fill='' />
       </button>
       <p className={styles.comments_counter}>{comments.length}</p>

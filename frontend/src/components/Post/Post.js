@@ -2,7 +2,7 @@ import styles from './Post.module.css';
 import Card from '../ui/Card/Card';
 import PostFooter from '../PostFooter/PostFooter';
 
-function Post({ post }) {
+function Post({ post, handleCommentOpen }) {
   return (
     <Card
       key={post.id}
@@ -15,7 +15,7 @@ function Post({ post }) {
         </div>
       }
       description={post.description}
-      Footer={<PostFooter key={post.id} likes={post.likes} comments={post.comments} />}
+      Footer={<PostFooter key={post.id} post={post} likes={post.likes} comments={post.comments} handleCommentOpen={handleCommentOpen} />}
       size='m'
       variant='wide'
     />
