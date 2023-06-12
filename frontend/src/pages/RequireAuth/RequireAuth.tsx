@@ -10,7 +10,7 @@ export function RequireAuth({ children }: { children: JSX.Element }) {
   if (!auth) {
     return (
       <div className={styles.wrapper}>
-        <p>Lets find your next trip!</p>
+        <p className={styles.text}>Lets find your next trip!</p>
         <Link href='/sign_in' label='Sign in now' />
       </div>
     );

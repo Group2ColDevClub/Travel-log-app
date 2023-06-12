@@ -1,3 +1,4 @@
+
 function formatPrice(price) {
   return (price / 1000).toFixed(2);
 }

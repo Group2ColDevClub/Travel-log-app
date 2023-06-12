@@ -23,6 +23,14 @@ const UsersSchema = mongoose.Schema({
             return emailRegex.test(value);
         }
     },
+    firstName: {
+        type: String,
+        min:3
+    },
+    lastName: {
+        type: String,
+        min:3
+    },
     createdAt: {
         type: Date,
         default: () => Date.now()

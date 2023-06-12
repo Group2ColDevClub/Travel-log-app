@@ -1,8 +1,11 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import { AuthProvider } from './context/AuthContext.tsx';
 import { RequireAuth } from './pages/RequireAuth/RequireAuth.tsx';
-import NavBar from './components/ui/navbar/navbar.tsx';
 import { Packages, PlanTrip, SignIn, SignUp, CommunityPage, Cart } from './pages';
+import NavBar from './components/ui/navbar/navbar.tsx';
+import styles from './App.module.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
   return (
@@ -25,6 +28,7 @@ export default function App() {
           <Route path='/community' element={<CommunityPage />} />
           <Route path='/cart' element={<Cart />} />
         </Routes>
+        <ToastContainer bodyClassName={styles.toast_body} />
       </BrowserRouter>
     </AuthProvider>
   );
